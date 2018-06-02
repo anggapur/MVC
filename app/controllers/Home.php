@@ -9,7 +9,7 @@ use app\providers\Auth;
 class Home extends MainController {
     public function index() {
 
-    	$data['content'] = Pengguna::getPengguna();    	
+    	 	
         $data['data'] = "Angga Purnajiwa";        
 
         return $this->TemplateView("layout/templateFront","front/index",$data);
