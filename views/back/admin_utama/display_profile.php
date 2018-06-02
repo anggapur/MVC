@@ -7,7 +7,7 @@
 <link rel="stylesheet" href="<?= $this->base_url('css/bootstrap-wysihtml5.css'); ?>" />
 <div id="content">
 <div id="content-header">
-  <div id="breadcrumb"> <a href="index.html" title="Go to Home" class="tip-bottom"><i class="icon-home"></i> Home</a> <a href="#" class="tip-bottom">My Profile</a> <a href="#" class="current">Data Profile</a> </div>
+  <div id="breadcrumb"> <a href="index.html" title="Go to Home" class="tip-bottom"><i class="icon-home"></i> Home</a> <a href="#" class="tip-bottom">My Profil</a> <a href="#" class="current">Data Profil</a> </div>
   <h1>Data Profil</h1>
 </div>
 	<div class="container-fluid">
@@ -86,6 +86,3 @@
 <script src="<?= $this->base_url('js/matrix.form_common.js');?>"></script> 
 <script src="<?= $this->base_url('js/wysihtml5-0.3.0.js');?>"></script> 
 <script src="<?= $this->base_url('js/bootstrap-wysihtml5.js');?>"></script> 
-
-</body>
-</html>
