@@ -1,22 +1,15 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<title>Info Pribadi</title>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<link rel="stylesheet" href="css/bootstrap.min.css" />
-<link rel="stylesheet" href="css/bootstrap-responsive.min.css" />
-<link rel="stylesheet" href="css/colorpicker.css" />
-<link rel="stylesheet" href="css/datepicker.css" />
-<link rel="stylesheet" href="css/uniform.css" />
-<link rel="stylesheet" href="css/select2.css" />
-<link rel="stylesheet" href="css/matrix-style.css" />
-<link rel="stylesheet" href="css/matrix-media.css" />
-<link rel="stylesheet" href="css/bootstrap-wysihtml5.css" />
-<link href="font-awesome/css/font-awesome.css" rel="stylesheet" />
-<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700,800' rel='stylesheet' type='text/css'>
-</head>
-	<body>
+<link rel="stylesheet" href="<?= $this->base_url('css/colorpicker.css'); ?>" />
+<link rel="stylesheet" href="<?= $this->base_url('css/datepicker.css'); ?>" />
+<link rel="stylesheet" href="<?= $this->base_url('css/uniform.css'); ?>" />
+<link rel="stylesheet" href="<?= $this->base_url('css/select2.css'); ?>" />
+<link rel="stylesheet" href="<?= $this->base_url('css/matrix-style.css'); ?>" />
+<link rel="stylesheet" href="<?= $this->base_url('css/matrix-media.css'); ?>" />
+<link rel="stylesheet" href="<?= $this->base_url('css/bootstrap-wysihtml5.css'); ?>" />
+<div id="content">
+<div id="content-header">
+  <div id="breadcrumb"> <a href="index.html" title="Go to Home" class="tip-bottom"><i class="icon-home"></i> Home</a> <a href="#" class="tip-bottom">My Profile</a> <a href="#" class="current">Data Profile</a> </div>
+  <h1>Data Profil</h1>
+</div>
 	<div class="container-fluid">
 	  <hr>
 	  <div class="row-fluid">
@@ -84,20 +77,15 @@
 	</div>
 </div>
 </div>
-<script src="js/jquery.min.js"></script> 
-<script src="js/jquery.ui.custom.js"></script> 
-<script src="js/bootstrap.min.js"></script> 
-<script src="js/bootstrap-colorpicker.js"></script> 
-<script src="js/bootstrap-datepicker.js"></script> 
-<script src="js/jquery.toggle.buttons.js"></script> 
-<script src="js/masked.js"></script> 
-<script src="js/jquery.uniform.js"></script> 
-<script src="js/select2.min.js"></script> 
-<script src="js/matrix.js"></script> 
-<script src="js/matrix.form_common.js"></script> 
-<script src="js/wysihtml5-0.3.0.js"></script> 
-<script src="js/jquery.peity.min.js"></script> 
-<script src="js/bootstrap-wysihtml5.js"></script> 
+</div>
+
+<script src="<?= $this->base_url('js/bootstrap-colorpicker.js');?>"></script> 
+<script src="<?= $this->base_url('js/bootstrap-datepicker.js');?>"></script> 
+<script src="<?= $this->base_url('js/jquery.toggle.buttons.js');?>"></script> 
+<script src="<?= $this->base_url('js/masked.js');?>"></script> 
+<script src="<?= $this->base_url('js/matrix.form_common.js');?>"></script> 
+<script src="<?= $this->base_url('js/wysihtml5-0.3.0.js');?>"></script> 
+<script src="<?= $this->base_url('js/bootstrap-wysihtml5.js');?>"></script> 
 
 </body>
 </html>
