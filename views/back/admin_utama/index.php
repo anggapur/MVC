@@ -1,14 +1,3 @@
-<!--sidebar-menu-->
-<div id="sidebar"><a href="#" class="visible-phone"><i class="icon icon-home"></i> Dashboard</a>
-  <ul>
-    <li class="active"><a href="index.html"><i class="icon icon-home"></i> <span>Dashboard</span></a> </li>
-    <li> <a href="verifikasi_user.php"><i class="icon icon-th"></i> <span>Verifikasi User</span></a> </li>
-    <li> <a href="Laporan.php"><i class="icon icon-book"></i> <span>Laporan</span></a> </li>
-    <li> <a href="barang.php"><i class="icon icon-tags"></i> <span>Barang</span></a> </li>
-    <li> <a href="musim.php"><i class="icon icon-bell"></i> <span>Musim</span></a> </li>
-  </ul>
-</div>
-<!--sidebar-menu-->
 <!--main-container-part-->
 <div id="content">
 <!--breadcrumbs-->
