@@ -19,6 +19,8 @@ class LoginControl extends MainController {
     public function cekSession()
     {
     	print_r($_SESSION);
+        
+        //echo $_SESSION['USER_ID']; mengambil id dari user login
     }
     public function pageCekAuth()
     {
