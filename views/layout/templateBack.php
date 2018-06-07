@@ -12,6 +12,7 @@
 <link href="<?= $this->base_url('assets/backend/font-awesome/css/font-awesome.css'); ?>" rel="stylesheet" />
 <link rel="stylesheet" href="<?= $this->base_url('assets/backend/css/jquery.gritter.css'); ?>" />
 <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700,800' rel='stylesheet' type='text/css'>
+<script src="<?= $this->base_url('assets/backend/js/jquery.min.js');?>"></script> 
 </head>
 <body>
 
@@ -28,7 +29,7 @@
   <ul class="nav">
     <li  class="dropdown" id="profile-messages" ><a title="" href="#" data-toggle="dropdown" data-target="#profile-messages" class="dropdown-toggle"><i class="icon icon-user"></i>  <span class="text">Welcome User</span><b class="caret"></b></a>
       <ul class="dropdown-menu">
-        <li><a href="display_profile.php"><i class="icon-user"></i> My Profile</a></li>
+        <li><a href="<?= $this->base_url('AdminUtama/displayProfile');?>"><i class="icon-user"></i> My Profile</a></li>
         <li class="divider"></li>
         <li><a href="login.html"><i class="icon-key"></i> Log Out</a></li>
       </ul>
@@ -46,13 +47,18 @@
 <!--sidebar-menu-->
 <div id="sidebar"><a href="#" class="visible-phone"><i class="icon icon-home"></i><?= $titlePage." / ".$actionPage;?></a>
   <ul>
-    <li class="active"><a href="index.html"><i class="icon icon-home"></i> <span>Dashboard</span></a> </li>
-    <li> <a href="verifikasi_user.php"><i class="icon icon-th"></i> <span>Verifikasi User</span></a> </li>
-    <li> <a href="Laporan.php"><i class="icon icon-book"></i> <span>Laporan</span></a> </li>
-    <li> <a href="barang.php"><i class="icon icon-tags"></i> <span>Barang</span></a> </li>
-    <li> <a href="musim.php"><i class="icon icon-bell"></i> <span>Musim</span></a> </li>
+    <!-- Angga Pram -->
+    <li class="active"><a href="<?= $this->base_url('AdminUtama/dashboard');?>"><i class="icon icon-home"></i> <span>Dashboard</span></a> </li>
+    <li> <a href="<?= $this->base_url('AdminUtama/verifikasiUser');?>"><i class="icon icon-th"></i> <span>Verifikasi User</span></a> </li>
+    <li> <a href="<?= $this->base_url('AdminUtama/laporan');?>"><i class="icon icon-book"></i> <span>Laporan</span></a> </li>
+    <li> <a href="<?= $this->base_url('AdminUtama/barang');?>"><i class="icon icon-tags"></i> <span>Barang</span></a> </li>
+    <li> <a href="<?= $this->base_url('AdminUtama/musim');?>"><i class="icon icon-bell"></i> <span>Musim</span></a> </li>
+    <!-- Dito -->
+    <li> <a href="<?= $this->base_url('AdminPetani/LaporanStok');?>"><i class="icon icon-th"></i> <span>Laporan & Stok Barang</span></a> </li>
+    <li> <a href="<?= $this->base_url('AdminPetani/BarangPetani');?>"><i class="icon icon-th"></i> <span>Tambah Barang Penjual</span></a> </li>
   </ul>
 </div>
+
 <!--sidebar-menu-->
 
 <?php
@@ -67,7 +73,7 @@
 <!--end-Footer-part-->
 
 <script src="<?= $this->base_url('assets/backend/js/excanvas.min.js');?>"></script> 
-<script src="<?= $this->base_url('assets/backend/js/jquery.min.js');?>"></script> 
+
 <script src="<?= $this->base_url('assets/backend/js/jquery.ui.custom.js');?>"></script> 
 <script src="<?= $this->base_url('assets/backend/js/bootstrap.min.js');?>"></script> 
 <script src="<?= $this->base_url('assets/backend/js/jquery.flot.min.js');?>"></script> 
@@ -87,6 +93,7 @@
 <script src="<?= $this->base_url('assets/backend/js/matrix.popover.js');?>"></script> 
 <script src="<?= $this->base_url('assets/backend/js/jquery.dataTables.min.js');?>"></script> 
 <script src="<?= $this->base_url('assets/backend/js/matrix.tables.js');?>"></script> 
+
 
 <script type="text/javascript">
   // This function is called from the pop-up menus to transfer to
