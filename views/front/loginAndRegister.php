@@ -2,15 +2,15 @@
 		<div class="container">
 			<div class="row">
 				<div class="col-md-4">
-					<form>
+					<form method="POST" action="<?= $this->base_url('LoginControl/login')?>">
 						<h4 class="title">Login</h4>
 						<div class="form-group">
-							<label>Email</label>
-							<input type="email" name="email" class="form-control">
+							<label>Username</label>
+							<input type="text" name="username" class="form-control" required="required" >
 						</div>
 						<div class="form-group">
 							<label>Password</label>
-							<input type="password" name="password" class="form-control">
+							<input type="password" name="password" class="form-control" required="required" min="6">
 						</div>
 						<div class="form-group">
 							<a href="" class="floatLeft">Biarkan saya tetap masuk</a>

@@ -1,4 +1,4 @@
-<?php use app\providers\{Auth}; ?>
+<?php use app\providers\{Auth,Url}; ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -21,9 +21,14 @@
 			<ul class="navigation-menu floatRight">
 				<?php 
 				if(Auth::checkAuth())
+				{
 					echo '<li><a href="">Akun Saya</a></li>';
+					echo '<li><a href="'.Url::to('LoginControl/logout').'">Logout</a></li>';
+				}
 				else
+				{
 					echo '<li><a href="">Daftar & Masuk</a></li>';
+				}	
 				?>								
 			</ul>
 		</div>

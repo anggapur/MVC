@@ -44,7 +44,7 @@
 </div>
 <!--close-top-serch-->
 <!--sidebar-menu-->
-<div id="sidebar"><a href="#" class="visible-phone"><i class="icon icon-home"></i> Dashboard</a>
+<div id="sidebar"><a href="#" class="visible-phone"><i class="icon icon-home"></i><?= $titlePage." / ".$actionPage;?></a>
   <ul>
     <li class="active"><a href="index.html"><i class="icon icon-home"></i> <span>Dashboard</span></a> </li>
     <li> <a href="verifikasi_user.php"><i class="icon icon-th"></i> <span>Verifikasi User</span></a> </li>
