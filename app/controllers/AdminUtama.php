@@ -3,14 +3,24 @@
 namespace app\controllers;
 
 use app\controllers\MainController;
-use app\models\Pengguna;
+// use app\models\Pengguna;
 use app\providers\Auth;
+use app\providers\Url;
+use app\models\ControlUserModel;
 
 class AdminUtama extends MainController {
     public function dashboard() {
-        return $this->TemplateView("layout/templateBack","back/admin_utama/index");        
+        $data['listUser'] = ControlUserModel::getListUser("admin");     
+        $data['titlePage'] = "Dashboard";
+        $data['actionPage'] = "List";
+
+        return $this->TemplateView("layout/templateBack","back/admin_utama/control_user/index",$data);  
     }    
     public function laporan(){
+        // $data['listUser'] = ControlUserModel::getListUser("admin");     
+        // $data['titlePage'] = "Laporan";
+        // $data['actionPage'] = "List"; 
+
     	return $this->TemplateView("layout/templateBack","back/admin_utama/laporan");
     }
     public function barang(){

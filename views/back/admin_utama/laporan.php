@@ -18,10 +18,15 @@
             <table class="table table-bordered data-table">
               <thead>
                 <tr>
+                  <th>Hasil Panen</th>
                   <th>Username</th>
-                  <th>Nama Barang</th>
+                  <th>Metode Pengiriman</th>
+                  <th>Harga Satuan</th>
                   <th>Terjual (Qty)</th>
                   <th>Satuan</th>
+                  <th>Status Pengiriman</th>
+                  <th>Status Pembayaran</th>
+                  <th>Waktu Transaksi</th>
                 </tr>
               </thead>
               <tbody>
