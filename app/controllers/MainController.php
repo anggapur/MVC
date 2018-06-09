@@ -6,13 +6,22 @@ use app\providers\Auth;
 abstract class MainController {
     protected $urlParams;
     protected $action;
+    protected $post;    
+
 
     public function __construct($action, $urlParams) {
         $this->action = $action;
         $this->urlParams = $urlParams;
+
+        $this->makePost();
     }
 
+    public function makePost()
+    {
+        $this->post = $_POST;
+    }
     public function ExecuteAction() {
+
         return $this->{$this->action}();
     }
 

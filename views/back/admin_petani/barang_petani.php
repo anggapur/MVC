@@ -1,6 +1,3 @@
-<link rel="stylesheet" href="<?= $this->base_url('assets/backend/css/uniform.css');?>"/>
-<link rel="stylesheet" href="<?= $this->base_url('assets/backend/css/select2.css');?>"/>
-
 <div id="content">
   <div id="content-header">
     <div id="breadcrumb"> <a href="#" title="Go to Home" class="tip-bottom"><i class="icon-home"></i> Home</a> <a href="#" class="current">Barang</a> </div>
@@ -77,3 +74,4 @@
     </div>
   </div>
 </div>
+

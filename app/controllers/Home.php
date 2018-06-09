@@ -7,11 +7,8 @@ use app\models\Pengguna;
 use app\providers\Auth;
 
 class Home extends MainController {
-    public function index() {
-
-    	 	
+    public function index() {    	 	
         $data['data'] = "Angga Purnajiwa";        
-
         return $this->TemplateView("layout/templateFront","front/index",$data);
     }
     public function listPedagang()
