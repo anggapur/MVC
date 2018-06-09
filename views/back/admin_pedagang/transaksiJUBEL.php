@@ -23,35 +23,59 @@
                 <input type="text" class="span11" placeholder="No Pembelian" />
               </div>
             </div>
+            <div class="control-group">
+              <label class="control-label">Kode Pedagang :</label>
+              <div class="controls">
+                <input type="text" class="span11" placeholder="Masukan Kode Barang" />
+              </div>
+            </div>
              <div class="control-group">
-              <label class="control-label">Tanggal Transaksi (dd-mm)</label>
+              <label class="control-label">Metode Pengiriman :</label>
+              <div class="controls">
+                <input type="text" class="span11" placeholder="Masukan Metode Pengiriman" />
+              </div>
+            </div>
+             <div class="control-group">
+              <label class="control-label">Harga Satuan :</label>
+              <div class="controls">
+                <input type="text" class="span11" placeholder="Masukan Harga Satuan" />
+              </div>
+            </div>
+             <div class="control-group">
+              <label class="control-label">Jumlah :</label>
+              <div class="controls">
+                <input type="number" class="span11" placeholder="Masukan Jumlah" />
+              </div>
+            </div>
+             <div class="control-group">
+              <label class="control-label">ID Satuan :</label>
+              <div class="controls">
+                <input type="text" class="span11" placeholder="Masukan ID Satuan" />
+              </div>
+            </div>
+             <div class="control-group">
+              <label class="control-label">Status Pengiriman :</label>
+              <div class="controls">
+                <input type="text" class="span11" placeholder="Masukan Status Pengiriman" />
+              </div>
+            </div>
+             <div class="control-group">
+              <label class="control-label">Status Pembayaran :</label>
+              <div class="controls">
+                <input type="text" class="span11" placeholder="Masukan Status Pembayaran" />
+              </div>
+            </div>
+             <div class="control-group">
+              <label class="control-label">Tanggal Transaksi (dd-mm) :</label>
               <div class="controls">
                 <input type="text" data-date="01-02-2013" data-date-format="dd-mm-yyyy" value="01-02-2013" class="datepicker span11">
                 <span class="help-block">Date with Formate of  (dd-mm-yy)</span> </div>
-            </div>
-            <div class="control-group">
-              <label class="control-label">Nama Pedagang :</label>
-              <div class="controls">
-                <input type="text" class="span11" placeholder="Masukan Nama Pedagang" />
-              </div>
-            </div>
-            <div class="control-group">
-              <label class="control-label">Kode Barang</label>
-              <div class="controls">
-                <input type="text"  class="span11" placeholder="Masukan Kode Barang"  />
-              </div>
-            </div>
-            <div class="control-group">
-              <label class="control-label">Jumlah</label>
-              <div class="controls">
-                <input type="text"  class="span11" placeholder="Masukan Jumlah"  />
-              </div>
             </div>
             <div class="form-actions">
               <button type="submit" class="btn btn-success">Add</button>
             </div>
 
-            <div class="widget-box">
+<!--       <div class="widget-box">
           <div class="widget-title"> <span class="icon"> <i class="icon-th"></i> </span>
             <h5>Tabel Pembelian</h5>
           </div>
@@ -83,7 +107,7 @@
           </form>
         </div>
       </div>
-
+-->
 <!--end-Footer-part--> 
 <script src="js/jquery.min.js"></script> 
 <script src="js/jquery.ui.custom.js"></script> 
