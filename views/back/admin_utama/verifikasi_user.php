@@ -26,25 +26,25 @@
                   <td>anggapra</td>
                   <td>asdfdsdf</td>
                   <td>Petani</td>
-                  <td class="center"><button class="btn btn-success">Confirm</button></td>
+                  <td class="center"><button class="btn btn-success btn-mini">Confirm</button></td>
                 </tr>
                 <tr class="gradeC">
                   <td>anggapur</td>
                   <td>asf</td>
                   <td>Pedagang</td>
-                  <td class="center"><button class="btn btn-success">Confirm</button></td>
+                  <td class="center"><button class="btn btn-success btn-mini">Confirm</button></td>
                 </tr>
                 <tr class="gradeC">
                   <td>dito</td>
                   <td>asdsdf</td>
                   <td>Petani</td>
-                  <td class="center"><button class="btn btn-success">Confirm</button></td>
+                  <td class="center"><button class="btn btn-success btn-mini">Confirm</button></td>
                 </tr>
                 <tr class="gradeU">
                   <td>kiki</td>
                   <td>asdfd</td>
                   <td>Petani</td>
-                  <td class="center"><button class="btn btn-success">Confirm</button></td>
+                  <td class="center"><button class="btn btn-success btn-mini">Confirm</button></td>
                 </tr>
               </tbody>
             </table>

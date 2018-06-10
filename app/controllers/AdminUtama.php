@@ -2,30 +2,34 @@
 
 namespace app\controllers;
 
+use app\models\ControlUserAdminUtamaModel;
 use app\controllers\MainController;
-// use app\models\Pengguna;
 use app\providers\Auth;
 use app\providers\Url;
-use app\models\ControlUserModel;
 
 class AdminUtama extends MainController {
     public function dashboard() {
-        $data['listUser'] = ControlUserModel::getListUser("admin");     
+        $data['listUser'] = ControlUserAdminUtamaModel::getListUser("admin");     
         $data['titlePage'] = "Dashboard";
         $data['actionPage'] = "List";
 
-        return $this->TemplateView("layout/templateBack","back/admin_utama/control_user/index",$data);  
+        return $this->TemplateView("layout/templateBack","back/admin_utama/index",$data);  
     }    
     public function laporan(){
-        // $data['listUser'] = ControlUserModel::getListUser("admin");     
-        // $data['titlePage'] = "Laporan";
-        // $data['actionPage'] = "List"; 
+        $data['listUser'] = ControlUserAdminUtamaModel::getListLaporan();     
+        $data['titlePage'] = "Laporan";
+        $data['actionPage'] = "List"; 
 
-    	return $this->TemplateView("layout/templateBack","back/admin_utama/laporan");
+    	return $this->TemplateView("layout/templateBack","back/admin_utama/laporan",$data);
     }
     public function barang(){
-    	return $this->TemplateView("layout/templateBack","back/admin_utama/barang");
+        $data['listUser'] = ControlUserAdminUtamaModel::getListSatuanBarang();
+        $data['listBarang'] = ControlUserAdminUtamaModel::getListSatuan();     
+        $data['titlePage'] = "Barang";
+        $data['actionPage'] = "List"; 
+    	return $this->TemplateView("layout/templateBack","back/admin_utama/barang",$data);
     }
+    
     public function displayProfile(){
     	return $this->TemplateView("layout/templateBack","back/admin_utama/display_profile");
     }
@@ -33,9 +37,13 @@ class AdminUtama extends MainController {
     	return $this->TemplateView("layout/templateBack","back/admin_utama/edit_profile");
     }
     public function musim(){
-    	return $this->TemplateView("layout/templateBack","back/admin_utama/musim");
+        $data['listUser'] = ControlUserAdminUtamaModel::getListMusim();     
+        $data['titlePage'] = "Musim";
+        $data['actionPage'] = "List"; 
+    	return $this->TemplateView("layout/templateBack","back/admin_utama/musim",$data);
     }
     public function verifikasiUser(){
     	return $this->TemplateView("layout/templateBack","back/admin_utama/verifikasi_user");
     }
+
 }

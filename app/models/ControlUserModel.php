@@ -1,6 +1,6 @@
- <?php
-
+<?php
 namespace app\models;
+
 use app\providers\Auth;
 
 class ControlUserModel extends MainModel {
@@ -29,4 +29,3 @@ class ControlUserModel extends MainModel {
    	$q = MainModel::getDB("UPDATE user SET USERNAME = '$username',PASSWORD = '$password',STATE = '$state' WHERE USER_ID = '$id'");
    	return $q;
    }
-}

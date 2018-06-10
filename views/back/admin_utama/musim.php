@@ -7,6 +7,13 @@
     <hr>
     <div class="row-fluid">
       <div class="span12">
+        <?php
+                if(isset($_SESSION['status']))
+                {
+                  echo "<div class='alert alert-".$_SESSION['color']."'>".$_SESSION['status']."</div>";
+                  unset($_SESSION['status']);
+                }
+              ?>
         <div class="widget-box">
           <div class="widget-title"> <span class="icon"><i class="icon-th"></i></span>
             <h5>Data Musim</h5>
@@ -18,35 +25,29 @@
                   <th>Nama Musim (Pangan)</th>
                   <th>Awal Musim (Waktu)</th>
                   <th>Akhir Musim (Waktu)</th>
+                  <th>Action</th>
                 </tr>
               </thead>
+              <?php 
+                    //Untuk Meloopin data yang diambil dari database
+                    foreach($listUser as $key => $value){
+                  ?>
               <tbody>
                 <tr class="gradeX">
-                  <td>Apel</td>
-                  <td>10 Juni 2018</td>
-                  <td>20 Juli 2018</td>
-                </tr>
-                <tr class="gradeC">
-                  <td>Pisang</td>
-                  <td>21 Juli 2018</td>
-                  <td>20 Agustus 2018</td>
-                </tr>
-                <tr class="gradeC">
-                  <td>Salak</td>
-                  <td>21 September 2018</td>
-                  <td>20 November 2018</td>
-                </tr>
-                <tr class="gradeU">
-                  <td>StrawBerry</td>
-                  <td>21 November 2018</td>
-                  <td>20 Januari 2019</td>
+                  <td><?= $value['NAMA_MUSIM']; ?></td>
+                  <td><?= $value['AWAL_MUSIM']; ?></td>
+                  <td><?= $value['AKHIR_MUSIM']; ?></td>
+                  <td>
+                      <a href="<?= $this->base_url('ControlUser/edit/'.$value['USER_ID']);?>" class="btn btn-warning btn-mini">Edit</a>
+                      <a href="<?= $this->base_url('ControlUser/delete/'.$value['USER_ID']); ?>" class="btn btn-danger btn-mini">Delete</a>
+                    </td>
                 </tr>
               </tbody>
+            <?php } ?>
             </table>
           </div>
         </div>
-        <button class="btn btn-primary">Tambah List</button>
-        <button class="btn btn-warning">Edit List</button>
+        <a href="<?= $this->base_url('ControlAdminUtama/createMusim/');?>" class="btn btn-success">Buat Baru</a>
       </div>
     </div>
   </div>

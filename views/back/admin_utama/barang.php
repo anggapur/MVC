@@ -10,34 +10,46 @@
     <hr>
     <div class="row-fluid">
       <div class="span12">
+        <?php
+                if(isset($_SESSION['status']))
+                {
+                  echo "<div class='alert alert-".$_SESSION['color']."'>".$_SESSION['status']."</div>";
+                  unset($_SESSION['status']);
+                }
+              ?>
         <div class="widget-box">
           <div class="widget-title"> <span class="icon"> <i class="icon-th"></i> </span>
             <h5>Tabel Satuan</h5>
           </div>
           <div class="widget-content nopadding">
             <table class="table table-bordered table-striped">
+              
               <thead>
                 <tr>
                   <th>Satuan</th>
+                  <th>Action</th>
                 </tr>
               </thead>
+              <?php 
+                foreach ($listBarang as $key => $value) {
+
+              ?>
               <tbody>
                 <tr class="odd gradeX">
-                  <td>Kg</td>
+                  <td><?= $value['SATUAN_NAMA']; ?></td>
+                  <td>
+                    <a href="<?= $this->base_url('ControlAdminUtama/editSatuan/'.$value['SATUAN_ID']);?>" class="btn btn-warning btn-mini">Edit</a>
+                      <a href="<?= $this->base_url('ControlAdminUtama/deleteSatuan/'.$value['SATUAN_ID']); ?>" class="btn btn-danger btn-mini">Delete</a>
+                    </td>
                 </tr>
-                <tr class="even gradeC">
-                  <td>Liter</td>
-                </tr>
-                <tr class="odd gradeA">
-                  <td>Buah</td>
-                </tr>
-                <tr class="even gradeA">
-                  <td>Sak</td>
-                </tr>
+               
               </tbody>
+             <?php } ?>
             </table>
           </div>
         </div>
+        <a href="<?= $this->base_url('ControlAdminUtama/createSatuanBarang/');?>" class="btn btn-success">Buat Baru</a>
+
         <div class="widget-box">
           <div class="widget-title"> <span class="icon"><i class="icon-th"></i></span>
             <h5>Tabel Barang</h5>
@@ -47,32 +59,27 @@
               <thead>
                 <tr>
                   <th>Nama Barang</th>
-                  <th>Satuan</th>
+                  <th>Action</th>
                 </tr>
               </thead>
+              <?php
+                foreach($listUser as $key => $value){
+
+              ?>
               <tbody>
                 <tr class="gradeX">
-                  <td>Apel</td>
-                  <td>Kg</td>
-                </tr>
-                <tr class="gradeC">
-                  <td>Minyak Kelapa</td>
-                  <td>Liter</td>
-                </tr>
-                <tr class="gradeC">
-                  <td>Tomat</td>
-                  <td>Kg</td>
-                </tr>
-                <tr class="gradeU">
-                  <td>Beras</td>
-                  <td>Kg</td>
+                  <td><?= $value['BARANG_NAMA']; ?></td>
+                  <td>
+                    <a href="<?= $this->base_url('ControlAdminUtama/editBarang/'.$value['BARANG_ID']);?>" class="btn btn-warning btn-mini">Edit</a>
+                      <a href="<?= $this->base_url('ControlAdminUtama/deleteBarang/'.$value['BARANG_ID']); ?>" class="btn btn-danger btn-mini">Delete</a>
+                  </td>
                 </tr>
               </tbody>
+            <?php } ?>
             </table>
           </div>
         </div>
-        <button class="btn btn-primary">Tambah List</button>
-        <button class="btn btn-warning">Edit List</button>
+        <a href="<?= $this->base_url('ControlAdminUtama/createBarang');?>" class="btn btn-success">Buat Baru</a>
       </div>
     </div>
   </div>

@@ -24,6 +24,8 @@
                 }
               ?>
               <a href="<?= $this->base_url('ControlUser/create');?>" class="btn btn-success btn-mini">Buat Baru</a>
+            
+
               <table class="table table-bordered">
                 <thead>
                   <tr>
