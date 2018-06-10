@@ -16,6 +16,13 @@
         <div class="widget-content" >
           <div class="row-fluid">
             <div class="span12">
+               <?php
+                if(isset($_SESSION['status']))
+                {
+                  echo "<div class='alert alert-".$_SESSION['color']."'>".$_SESSION['status']."</div>";
+                  unset($_SESSION['status']);
+                }
+              ?>
               <form method="POST" action="<?= $this->base_url('ControlPedagang/update/'.$ambilPedagang['USER_ID']);?>">
                 <div class="form-group">
                   <label>Nama Toko</label>

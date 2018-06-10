@@ -16,7 +16,7 @@
         <div class="widget-content" >
           <div class="row-fluid">
             <div class="span12">
-              <form method="POST" action="<?= $this->base_url('ControlUser/save');?>">
+              <form method="POST" action="<?= $this->base_url('ControlAdminUtama/save');?>">
                 <div class="form-group">
                   <label>Username</label>
                   <input type="text" name="USERNAME" class="form-control" placeholder="Masukan Username">
@@ -25,11 +25,22 @@
                   <label>Password</label>
                   <input type="password" name="PASSWORD" class="form-control" placeholder="Masukan Password">
                 </div>
+                <div class="form-group">
+                  <label>Email</label>
+                  <input type="text" name="EMAIL" class="form-control" placeholder="Masukan Email">
+                </div>
                  <div class="form-group">
-                  <label>State</label>
+                  <label>Jenis User</label>
                   <select name="STATE" class="form-control">
                     <option value="pedagang">Pedagang</option>
                     <option value="petani">Petani</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label>Status Verifikasi</label>
+                  <select name="STATE_VERIF" class="form-control">
+                    <option value="verified">Verified</option>
+                    <option value="unverified">Unverified</option>
                   </select>
                 </div>
                 <div class="form-group">

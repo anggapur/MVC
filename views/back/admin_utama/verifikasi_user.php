@@ -7,6 +7,13 @@
     <hr>
     <div class="row-fluid">
       <div class="span12">
+        <?php
+                if(isset($_SESSION['status']))
+                {
+                  echo "<div class='alert alert-".$_SESSION['color']."'>".$_SESSION['status']."</div>";
+                  unset($_SESSION['status']);
+                }
+              ?>
         <div class="widget-box">
           <div class="widget-title"> <span class="icon"><i class="icon-th"></i></span>
             <h5>Data table</h5>
@@ -17,36 +24,28 @@
                 <tr>
                   <th>Username</th>
                   <th>Password</th>
+                  <th>Email</th>
                   <th>Jenis User</th>
-                  <th>Verify</th>
+                  <th>Status</th>
+                  <th>Action</th>
                 </tr>
               </thead>
+              <?php 
+                foreach ($listUser as $key => $value) {
+
+              ?>
               <tbody>
                 <tr class="gradeX">
-                  <td>anggapra</td>
-                  <td>asdfdsdf</td>
-                  <td>Petani</td>
-                  <td class="center"><button class="btn btn-success btn-mini">Confirm</button></td>
-                </tr>
-                <tr class="gradeC">
-                  <td>anggapur</td>
-                  <td>asf</td>
-                  <td>Pedagang</td>
-                  <td class="center"><button class="btn btn-success btn-mini">Confirm</button></td>
-                </tr>
-                <tr class="gradeC">
-                  <td>dito</td>
-                  <td>asdsdf</td>
-                  <td>Petani</td>
-                  <td class="center"><button class="btn btn-success btn-mini">Confirm</button></td>
-                </tr>
-                <tr class="gradeU">
-                  <td>kiki</td>
-                  <td>asdfd</td>
-                  <td>Petani</td>
-                  <td class="center"><button class="btn btn-success btn-mini">Confirm</button></td>
+                  <td><?= $value['USERNAME']; ?></td>
+                  <td><?= $value['PASSWORD']; ?></td>
+                  <td><?= $value['EMAIL']; ?></td>
+                  <td><?= $value['STATE']; ?></td>
+                  <td><?= $value['STATE_VERIF']; ?></td>
+                  <td><a href="<?= $this->base_url('ControlAdminUtama/updateVerifikasiUser/'.$value['USER_ID']);?>" class="btn btn-success btn-mini">Confirm</a>
+                  </td>
                 </tr>
               </tbody>
+              <?php } ?>
             </table>
           </div>
         </div>
