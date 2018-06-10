@@ -1,4 +1,4 @@
-<!--main-container-part-->
+  <!--main-container-part-->
 <div id="content">
 <!--breadcrumbs-->
   <div id="content-header">
@@ -8,14 +8,7 @@
 
 <!--Action boxes-->
   <div class="container-fluid">
-    <div class="quick-actions_homepage">
-      <ul class="quick-actions">
-        <li class="bg_lb"> <a href="index.html"> <i class="icon-dashboard"></i> <span class="label label-important">20</span> My Dashboard </a> </li>
-        <li class="bg_lg span3"> <a href="verifikasi_user.php"> <i class="icon-th"></i> Verifikasi User</a> </li>
-        <li class="bg_ly"> <a href="barang.php"> <i class="icon-tags"></i><span class="label label-success">101</span> Barang </a> </li>
-        <li class="bg_lo"> <a href="musim.php"> <i class="icon-bell"></i> Musim</a> </li>
-      </ul>
-    </div>
+    
 <!--End-Action boxes-->    
 
 <!--Chart-box-->    
