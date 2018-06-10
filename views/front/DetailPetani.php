@@ -40,7 +40,7 @@
 						<p><?= Formating::moneyFormat($value['HARGA_SATUAN'])." / ".$value['SATUAN_NAMA'];?></p>
 						<p>Tersedia : <?= ($value['sisa'] == NULL) ? $value['JUMLAH'] : $value['sisa']; ?> <?= $value['SATUAN_NAMA']; ?></p>
 						<p>Di Posting : <?= Formating::dayFormat($value['WAKTU_BUAT'],'d M Y');?></p>
-						<a href="" class="ayoBeli" data-hasil-panen-id="<?= $value['HASILPANEN_ID']?>">Beli</a>
+						<a href="" class="ayoBeli" data-hasil-panen-id="<?= $value['HASILPANEN_ID']?>" data-sisa-panen="<?= ($value['sisa'] == NULL) ? $value['JUMLAH'] : $value['sisa']; ?>">Beli</a>
 						<a href="" class="ayoTawar" data-hasil-panen-id="<?= $value['HASILPANEN_ID']?>">Tawar</a>
 					</div>
 				</div>							
@@ -56,7 +56,7 @@
 			<div class="modal-content">
 				<div class="modal-header">
 					<button type="button" class="close" data-dismiss="modal">&times;</button>
-					<h4 class="modal-title">Filter</h4>
+					<h4 class="modal-title">Pembelian</h4>
 				</div>
 			<div class="modal-body">
 				<div class="form-group">
@@ -85,27 +85,62 @@
 			</div>
 		</div>
 	</div>
+	<!-- Modal -->
+	<div id="myModal2" class="modal fade" role="dialog">
+		<div class="modal-dialog">
+
+		<!-- Modal content-->
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+					<h4 class="modal-title">Pemberitahuan</h4>
+				</div>
+			<div class="modal-body">
+				<h1>Maaf Stock Sudah Habis</h1>		
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+				<button type="button" class="btn btn-success">Saring</button>
+			</div>
+			</div>
+		</div>
+	</div>
 	<script type="text/javascript">
 		$(document).ready(function(){
 			$('.ayoBeli').click(function(e){
 				e.preventDefault();
 				HASILPANEN_ID = $(this).attr('data-hasil-panen-id');
-				$.ajax({
-					url : "<?= $this->base_url('Home/BuatTransaksi')?>",
-					type : "POST",
-					dataType : "JSON",
-					success : function(data)
-					{
-						if(data.status == "not-logged-in")
+				SISA = $(this).attr('data-sisa-panen');				
+				if(SISA > 0)
+				{
+
+					$.ajax({
+						url : "<?= $this->base_url('Home/BuatTransaksi')?>/"+HASILPANEN_ID,
+						type : "POST",
+						dataType : "JSON",
+						success : function(data)
 						{
-							window.location.href="<?= $this->base_url('Home/loginAndRegister');?>";
+							console.log(data);
+							if(data.status == "not-logged-in")
+							{
+								window.location.href="<?= $this->base_url('Home/loginAndRegister');?>";
+							}
+							else if(data.status == "not-verified")
+							{
+								window.location.href="<?= $this->base_url('Home/NotVerified');?>";
+							}
+							else if(data.status == "success")
+							{
+								$('#myModal').modal('show');
+							}
+
 						}
-						else
-						{
-							
-						}
-					}
-				});
+					}); // end ajax
+				}
+				else
+				{
+					$('#myModal2').modal('show');
+				}
 			});
 		});
 	</script>

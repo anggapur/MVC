@@ -83,7 +83,18 @@ class Home extends MainController {
     public function BuatTransaksi()
     {
         if(Auth::checkAuth() == FALSE)
+        {
             echo json_encode(['status' => 'not-logged-in']);
+        }
+        else if($_SESSION['STATE_VERIF'] == "unverified")
+        {
+            echo json_encode(['status' => 'not-verified']);
+        }
+        else
+        {
+            $data = "";
+            echo json_encode(['status' => 'success' , 'data' => $data]);   
+        }
     }
     public function NotVerified()
     {
