@@ -6,7 +6,7 @@ namespace app\providers;
 abstract class Url {
     public function redirectTo($urlInject)
     {
-    	$uri = Url::base_url()."/".$urlInject;
+    	$uri = Url::base_url().$urlInject;
         header("location:".$uri);
     }
     public function to($urlInject)

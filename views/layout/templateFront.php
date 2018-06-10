@@ -7,6 +7,8 @@
 	<link rel="stylesheet" type="text/css" href="<?= $this->base_url('assets/front/bootstrap/css/bootstrap.min.css');?>">
 	<link rel="stylesheet" type="text/css" href="<?= $this->base_url('assets/front/bootstrap/css/style.css');?>">
 	<link rel="stylesheet" type="text/css" href="<?= $this->base_url('assets/front/font-awesome-4.7.0/css/font-awesome.min.css');?>">
+	<!-- JS -->
+	<script type="text/javascript" src="<?= $this->base_url('assets/front/jquery/jquery-1.9.1.min.js'); ?>"></script>
 </head>
 <body>
 	<!-- Navigation -->
@@ -27,14 +29,14 @@
 				}
 				else
 				{
-					echo '<li><a href="">Daftar & Masuk</a></li>';
+					echo '<li><a href="'.$this->base_url('Home/loginAndRegister').'">Daftar & Masuk</a></li>';
 				}	
 				?>								
 			</ul>
 		</div>
 	</nav>
 	<!-- Header -->
-	<header>
+	<header class="<?= isset($headerShow) ? $headerShow : '';?>">
 		<div class="container">
 			<div class="col-md-3 logo-wrap">
 				<img src="<?= $this->base_url('assets/front/assets/logo.png');?>" alt="Logo" class="img-logo">
@@ -54,7 +56,7 @@
 			</div>
 		</div>
 	</header>
-	<hr>
+	<hr class="<?= isset($headerShow) ? $headerShow : '';?>">
 
 
 	<?php
@@ -70,6 +72,6 @@
 		</div>
 	</footer>
 </body>
-<script type="text/javascript" src="jquery/jquery-1.9.1.min.js"></script>
-<script type="text/javascript" src="bootstrap/js/bootstrap.min.js"></script>
+
+<script type="text/javascript" src="<?= $this->base_url('assets/front/bootstrap/js/bootstrap.min.js'); ?>"></script>
 </html>

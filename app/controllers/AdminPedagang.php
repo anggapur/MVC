@@ -7,6 +7,9 @@ use app\models\Pengguna;
 use app\providers\Auth;
 
 class AdminPedagang extends MainController {
+     public function dashboard() {
+        return $this->TemplateView("layout/templateBack","back/admin_pedagang/index");        
+    }   
     public function EditJubel() {
 
     	 	
