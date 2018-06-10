@@ -45,9 +45,7 @@ class ControlPedagang extends MainController {
     }
 
      public function edit()
-        }
-    }
-    {
+     {
         $id = $_SESSION['id'];
         //$id = 4;
         $data['titlePage'] = "Control Pedagang";

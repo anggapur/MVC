@@ -2,7 +2,7 @@
 
 namespace app\models;
 use app\providers\Auth;
-class ControlPedagangrModel extends MainModel {
+class ControlPedagangModel extends MainModel {
 	public function getListPedagang()
    {
    	//get query akan memberikan output array
