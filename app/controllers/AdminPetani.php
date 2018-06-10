@@ -7,6 +7,9 @@ use app\models\Pengguna;
 use app\providers\Auth;
 
 class AdminPetani extends MainController {
+	 public function dashboard() {
+        return $this->TemplateView("layout/templateBack","back/admin_petani/index");        
+    }   
     public function LaporanStok() {
         return $this->TemplateView("layout/templateBack","back/admin_petani/Laporan_stok");        
     }   

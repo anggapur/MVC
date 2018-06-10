@@ -30,4 +30,46 @@ class Login extends MainModel {
         	return ['status' => 'failed'];
         }
     }
+
+    public function checkEmailUsed($email)
+    {
+        $sql = "SELECT * FROM user WHERE EMAIL = '$email'";
+        $query = MainModel::getQuery($sql);
+        if(count($query) > 0)
+            return ['status' => 'used'];
+        else
+            return ['status' => 'unused'];
+    }
+    public function insertToUser($data_user)
+    {
+        extract($data_user);
+        $WAKTU_BUAT = date('Y-m-d h:i:s');
+        $sql = "INSERT INTO user VALUES('','$USERNAME','$PASSWORD','$EMAIL','$STATE','$STATE_VERIF','$WAKTU_BUAT')";
+        return MainModel::getDB($sql);        
+    }
+    public function findEmail($email)
+    {
+        $sql = "SELECT USER_ID,USERNAME,STATE,STATE_VERIF FROM user WHERE EMAIL = '$email'";
+        $query = MainModel::getQuery($sql);
+        return $query;
+    }
+    public function insertToIdentitasPetani($dataIdentitas)
+    {
+        extract($dataIdentitas);
+         $sql = "INSERT INTO identitas_petani VALUES('','$USER_ID','','$NAMA','','$PHONE','','','$JENIS_KELAMIN','$TANGGAL_LAHIR','$WAKTU_BUAT')";
+        return MainModel::getDB($sql);    
+    }
+    public function insertToIdentitasPedagang($dataIdentitas)
+    {
+        extract($dataIdentitas);
+         $sql = "INSERT INTO identitas_pedagang VALUES('','$USER_ID','','','','$PHONE','$NAMA','','','$JENIS_KELAMIN','$TANGGAL_LAHIR','$WAKTU_BUAT')";
+        return MainModel::getDB($sql);    
+    }
+
+    public function updateDataIdentitasPetani($data,$user_id)
+    {
+        extract($data);
+        $sql = "UPDATE identitas_petani SET KTP = '$KTP', ALAMAT = '$ALAMAT', PROVINSI = '$PROVINSI' , KECAMATAN = '$KECAMATAN' , KOTA = '$KOTA' WHERE USER_ID = '$user_id'";
+        return MainModel::getDB($sql);
+    }
 }

@@ -1,0 +1,14 @@
+// Menambahkan Kolom Password di User
+ALTER TABLE `user` ADD `EMAIL` VARCHAR(50) NOT NULL AFTER `PASSWORD`;
+//menambahkan Kolom Verif di User
+ALTER TABLE `user`  ADD `STATE_VERIF` ENUM('verified','unverified','') NULL DEFAULT NULL  AFTER `STATE`;
+// Isi tanggal lahir dan jenis kelamin
+ALTER TABLE `identitas_petani`  ADD `JENIS_KELAMIN` ENUM('L','P','','') NULL DEFAULT NULL  AFTER `KOTA`,  ADD `TANGGAL_LAHIR` DATE NULL DEFAULT NULL  AFTER `JENIS_KELAMIN`;
+ALTER TABLE `identitas_pedagang`  ADD `JENIS_KELAMIN` ENUM('L','P','','') NULL DEFAULT NULL  AFTER `KOTA`,  ADD `TANGGAL_LAHIR` DATE NULL DEFAULT NULL  AFTER `JENIS_KELAMIN`;
+
+ALTER TABLE `identitas_pedagang`  ADD `PROVINSI` VARCHAR(30) NOT NULL  AFTER `NAMA`;
+
+ALTER TABLE `identitas_petani`  ADD `PROVINSI` VARCHAR(30) NOT NULL  AFTER `PHONE`;
+
+
+
