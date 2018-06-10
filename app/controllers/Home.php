@@ -5,6 +5,7 @@ namespace app\controllers;
 use app\controllers\MainController;
 use app\models\Pengguna;
 use app\providers\Auth;
+use app\providers\Url;
 
 class Home extends MainController {
     public function index() {    	 	
@@ -23,8 +24,15 @@ class Home extends MainController {
     }
     public function loginAndRegister()
     {    	
-    	$data['title'] = "List Sayur & Buah";
-    	return $this->TemplateView("layout/templateFront","front/loginAndRegister",$data);
+        if(Auth::checkAuth())
+        {
+            return Url::redirectTo('Home/index');
+        }
+        else
+        {
+    	   $data['title'] = "List Sayur & Buah";
+    	   return $this->TemplateView("layout/templateFront","front/loginAndRegister",$data);
+        }
     }
     public function monitoringHarga()
     {    	

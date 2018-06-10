@@ -1,3 +1,4 @@
+<?php use app\providers\{Auth,Url}; ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -31,10 +32,10 @@
       <ul class="dropdown-menu">
         <li><a href="<?= $this->base_url('AdminUtama/displayProfile');?>"><i class="icon-user"></i> My Profile</a></li>
         <li class="divider"></li>
-        <li><a href="login.html"><i class="icon-key"></i> Log Out</a></li>
+        <li><a href="<?= Url::to('LoginControl/logout') ?>"><i class="icon-key"></i> Log Out</a></li>
       </ul>
     </li>
-    <li class=""><a title="" href="login.html"><i class="icon icon-share-alt"></i> <span class="text">Logout</span></a></li>
+    <li class=""><a title="Logout" href="<?= Url::to('LoginControl/logout') ?>"><i class="icon icon-share-alt"></i> <span class="text">Logout</span></a></li>
   </ul>
 </div>
 <!--close-top-Header-menu-->
