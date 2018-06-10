@@ -31,11 +31,17 @@ class AdminUtama extends MainController {
     }
     
     public function displayProfile(){
-    	return $this->TemplateView("layout/templateBack","back/admin_utama/display_profile");
+        $data['listUser'] = ControlUserAdminUtamaModel::getListAdmin("admin");     
+        $data['titlePage'] = "AdminUtama";
+        $data['actionPage'] = "Data";
+    	return $this->TemplateView("layout/templateBack","back/admin_utama/display_profile",$data);
     }
-    public function editProfile(){
-    	return $this->TemplateView("layout/templateBack","back/admin_utama/edit_profile");
-    }
+    // public function editProfile(){
+    //     $data['listUser'] = ControlUserAdminUtamaModel::getListAdmin('admin');     
+    //     $data['titlePage'] = "AdminUtama";
+    //     $data['actionPage'] = "Data";
+    // 	return $this->TemplateView("layout/templateBack","back/admin_utama/control_user/edit_profile",$data);
+    // }
     public function musim(){
         $data['listUser'] = ControlUserAdminUtamaModel::getListMusim();     
         $data['titlePage'] = "Musim";
