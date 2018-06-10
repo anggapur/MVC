@@ -30,8 +30,11 @@ class Home extends MainController {
         echo json_encode(frontModel::getListPetani($page,$dataPerPage));
     }
      public function listBuahSayur()    
-    {    	
+    {    	        
     	$data['title'] = "List Sayur & Buah";
+        $page = 1;
+        $dataPerPage = 2;
+        $data['listBuahSayur'] = frontModel::getListBuahSayur($page,$dataPerPage);
     	return $this->TemplateView("layout/templateFront","front/listSayurBuah",$data);
     }
 
@@ -49,6 +52,7 @@ class Home extends MainController {
     }
     public function monitoringHarga()
     {    	
+        $data['listHarga'] = frontModel::listHarga();
     	$data['title'] = "List Sayur & Buah";
     	return $this->TemplateView("layout/templateFront","front/monitoringHarga",$data);
     }

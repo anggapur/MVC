@@ -15,4 +15,34 @@ class frontModel extends MainModel {
 		";
 		return MainModel::getQuery($sql);
    }
+   public function getListBuahSayur($page,$dataPerPage)
+   {
+   		$pages = ($page-1)*$dataPerPage;
+   		$sql = "SELECT * FROM barang
+		ORDER BY BARANG_NAMA ASC
+		LIMIT $pages,$dataPerPage
+		";
+		return MainModel::getQuery($sql);
+   }
+
+   public function listHarga()
+   {
+   	$sql = 'SELECT *,
+		(SELECT sum(HARGA_SATUAN) FROM hasil_panen WHERE WAKTU_BUAT = curdate() AND hasil_panen.BARANG_ID = barang.BARANG_ID)
+		/
+		(SELECT count(HARGA_SATUAN) FROM hasil_panen WHERE WAKTU_BUAT = curdate() AND hasil_panen.BARANG_ID = barang.BARANG_ID) as rataHariIni 
+		,
+		(SELECT sum(HARGA_SATUAN) FROM hasil_panen WHERE WAKTU_BUAT >= curdate() - INTERVAL DAYOFWEEK(curdate())+6 DAY
+		AND WAKTU_BUAT <= curdate() AND hasil_panen.BARANG_ID = barang.BARANG_ID)
+		/
+		(SELECT count(HARGA_SATUAN) FROM hasil_panen WHERE WAKTU_BUAT >= curdate() - INTERVAL DAYOFWEEK(curdate())+6 DAY
+		AND WAKTU_BUAT <= curdate() AND hasil_panen.BARANG_ID = barang.BARANG_ID) as rataMingguIni 
+		,
+		(SELECT sum(HARGA_SATUAN) FROM hasil_panen WHERE WAKTU_BUAT = curdate() - INTERVAL DAYOFWEEK(curdate())+0 DAY AND hasil_panen.BARANG_ID = barang.BARANG_ID)
+		/
+		(SELECT count(HARGA_SATUAN) FROM hasil_panen WHERE WAKTU_BUAT = curdate() - INTERVAL DAYOFWEEK(curdate())+0 DAY AND hasil_panen.BARANG_ID = barang.BARANG_ID) as rataKemarin
+		FROM barang';
+		$q = MainModel::getQuery($sql);
+		return $q;
+   }
 }

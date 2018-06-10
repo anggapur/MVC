@@ -26,19 +26,19 @@
 							<div class="form-group">
 								<label>Provinsi</label>
 								<select name="PROVINSI" class="form-control" id="PROVINSI" required="required">
-									<option value="bali">Bali</option>									
+																	
 								</select>
 							</div>
 							<div class="form-group">
 								<label>Kota</label>
 								<select name="KOTA" class="form-control" id="KOTA" required="required">
-									<option value="denpasar">Denpasar</option>
+									
 								</select>
 							</div>
 							<div class="form-group">
 								<label>Kecamatan</label>
 								<select name="KECAMATAN" class="form-control" id="KECAMATAN" required="required">
-									<option value="denpasar utara">Denpasar Utara</option>
+									
 								</select>
 							</div>							
 						</div>
@@ -68,19 +68,19 @@
 							<div class="form-group">
 								<label>Provinsi</label>
 								<select name="PROVINSI" class="form-control" id="PROVINSI" required="required">
-									<option value="bali">Bali</option>									
+																	
 								</select>
 							</div>
 							<div class="form-group">
 								<label>Kota</label>
 								<select name="KOTA" class="form-control" id="KOTA" required="required">
-									<option value="denpasar">Denpasar</option>
+									
 								</select>
 							</div>
 							<div class="form-group">
 								<label>Kecamatan</label>
 								<select name="KECAMATAN" class="form-control" id="KECAMATAN" required="required">
-									<option value="denpasar utara">Denpasar Utara</option>
+									
 								</select>
 							</div>							
 						</div>
@@ -96,13 +96,49 @@
 	</section>
 	<script type="text/javascript">
 		$(document).ready(function(){
+			//Prov
 			$.ajax({
-				url : 'http://api.ruangpanji.com/provinsi.php',
+				url : 'http://dev.farizdotid.com/api/daerahindonesia/provinsi',
 				dataType : 'json',
 				type : 'GET',
 				success : function(data){
-					console.log(data);
+					$.each(data.semuaprovinsi,function(i,item){
+						html = '<option value="'+item.nama+'" data-provinsi-id="'+item.id+'">'+item.nama+'</option>';
+						$('#PROVINSI').append(html);
+					});
 				},
+			});
+			//
+			$('#PROVINSI').change(function(){
+				provinsiId = $(this).find('option:selected').attr('data-provinsi-id');
+				$.ajax({
+					url : 'http://dev.farizdotid.com/api/daerahindonesia/provinsi/'+provinsiId+'/kabupaten',
+					dataType : 'json',
+					type : 'GET',
+					success : function(data){
+						$('#KOTA').empty();
+						$.each(data.daftar_kecamatan,function(i,item){
+							html = '<option value="'+item.nama+'" data-kota-id="'+item.id+'" data-provinsi-id="'+item.id_prov+'">'+item.nama+'</option>';
+							$('#KOTA').append(html);
+						});
+					},
+				});
+			});
+
+			$('#KOTA').change(function(){
+				kotaId = $(this).find('option:selected').attr('data-kota-id');				
+				$.ajax({
+					url : 'http://dev.farizdotid.com/api/daerahindonesia/provinsi/kabupaten/'+kotaId+'/kecamatan',
+					dataType : 'json',
+					type : 'GET',
+					success : function(data){
+						$('#KECAMATAN').empty();
+						$.each(data.daftar_kecamatan,function(i,item){
+							html = '<option value="'+item.nama+'" data-kecamatan-id="'+item.id+'" data-kota-id="'+item.id_prov+'">'+item.nama+'</option>';
+							$('#KECAMATAN').append(html);
+						});
+					},
+				});
 			});
 		});
 	</script>

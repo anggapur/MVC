@@ -1,0 +1,40 @@
+
+
+SELECT *,
+(SELECT sum(HARGA_SATUAN) FROM hasil_panen WHERE WAKTU_BUAT >= curdate() - INTERVAL DAYOFWEEK(curdate())+6 DAY
+AND WAKTU_BUAT <= curdate() AND hasil_panen.BARANG_ID = barang.BARANG_ID)
+/
+(SELECT count(HARGA_SATUAN) FROM hasil_panen WHERE WAKTU_BUAT >= curdate() - INTERVAL DAYOFWEEK(curdate())+6 DAY
+AND WAKTU_BUAT <= curdate() AND hasil_panen.BARANG_ID = barang.BARANG_ID) as rataMingguIni 
+FROM barang
+
+
+SELECT *,
+(SELECT sum(HARGA_SATUAN) FROM hasil_panen WHERE WAKTU_BUAT = curdate() AND hasil_panen.BARANG_ID = barang.BARANG_ID)
+/
+(SELECT count(HARGA_SATUAN) FROM hasil_panen WHERE WAKTU_BUAT = curdate() AND hasil_panen.BARANG_ID = barang.BARANG_ID) as rataHariIni 
+,
+(SELECT sum(HARGA_SATUAN) FROM hasil_panen WHERE WAKTU_BUAT >= curdate() - INTERVAL DAYOFWEEK(curdate())+6 DAY
+AND WAKTU_BUAT <= curdate() AND hasil_panen.BARANG_ID = barang.BARANG_ID)
+/
+(SELECT count(HARGA_SATUAN) FROM hasil_panen WHERE WAKTU_BUAT >= curdate() - INTERVAL DAYOFWEEK(curdate())+6 DAY
+AND WAKTU_BUAT <= curdate() AND hasil_panen.BARANG_ID = barang.BARANG_ID) as rataMingguIni 
+FROM barang
+
+
+
+SELECT *,
+(SELECT sum(HARGA_SATUAN) FROM hasil_panen WHERE WAKTU_BUAT = curdate() AND hasil_panen.BARANG_ID = barang.BARANG_ID)
+/
+(SELECT count(HARGA_SATUAN) FROM hasil_panen WHERE WAKTU_BUAT = curdate() AND hasil_panen.BARANG_ID = barang.BARANG_ID) as rataHariIni 
+,
+(SELECT sum(HARGA_SATUAN) FROM hasil_panen WHERE WAKTU_BUAT >= curdate() - INTERVAL DAYOFWEEK(curdate())+6 DAY
+AND WAKTU_BUAT <= curdate() AND hasil_panen.BARANG_ID = barang.BARANG_ID)
+/
+(SELECT count(HARGA_SATUAN) FROM hasil_panen WHERE WAKTU_BUAT >= curdate() - INTERVAL DAYOFWEEK(curdate())+6 DAY
+AND WAKTU_BUAT <= curdate() AND hasil_panen.BARANG_ID = barang.BARANG_ID) as rataMingguIni 
+,
+(SELECT sum(HARGA_SATUAN) FROM hasil_panen WHERE WAKTU_BUAT = curdate() - INTERVAL DAYOFWEEK(curdate())+0 DAY AND hasil_panen.BARANG_ID = barang.BARANG_ID)
+/
+(SELECT count(HARGA_SATUAN) FROM hasil_panen WHERE WAKTU_BUAT = curdate() - INTERVAL DAYOFWEEK(curdate())+0 DAY AND hasil_panen.BARANG_ID = barang.BARANG_ID) as rataKemarin
+FROM barang
