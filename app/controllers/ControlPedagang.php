@@ -46,16 +46,16 @@ class ControlPedagang extends MainController {
 
      public function edit()
      {
-        $id = $_SESSION['id'];
+        $id = $_SESSION['USER_ID'];
         //$id = 4;
         $data['titlePage'] = "Control Pedagang";
         $data['actionPage'] = "Edit";
-        $data['ambilData'] = ControlPedagangModel:: ambilPedagang($id)[0];    
+        $data['ambilPedagang'] = ControlPedagangModel::ambilPedagang($id)[0];    
         return $this->TemplateView("layout/templateBack","back/admin_pedagang/control_pedagang/edit",$data);
     }
     public function update()
     {
-        $id = $_SESSION['id'];
+        $id = $_SESSION['USER_ID'];
         $update = ControlPedagangModel::updatePedagang($id,$_POST['NAMA_TOKO'],$_POST['ALAMAT'],$_POST['NO_KTP'],$_POST['PHONE'],$_POST['NAMA'],$_POST['KECAMATAN'],$_POST['KOTA']);
 
         if($update)
