@@ -49,7 +49,47 @@
 						</div>
 					</form>
 				<?php }else{ ?>
-
+					<form method="POST" action="<?= $this->base_url('LoginControl/submitDataPedagang');?>">
+						<div class="col-md-6">
+							<div class="form-group">
+								<label>KTP</label>
+								<input type="text" name="NO_KTP" class="form-control" placeholder="KTP" required="required">
+							</div>
+							<div class="form-group">
+								<label>Nama Toko</label>
+								<input type="text" name="NAMA_TOKO" class="form-control" placeholder="NAMA TOKO" required="required">
+							</div>
+							<div class="form-group">
+								<label>Alamat</label>
+								<textarea class="form-control" name="ALAMAT" required="required" rows="5"></textarea>
+							</div>
+						</div>
+						<div class="col-md-6">
+							<div class="form-group">
+								<label>Provinsi</label>
+								<select name="PROVINSI" class="form-control" id="PROVINSI" required="required">
+									<option value="bali">Bali</option>									
+								</select>
+							</div>
+							<div class="form-group">
+								<label>Kota</label>
+								<select name="KOTA" class="form-control" id="KOTA" required="required">
+									<option value="denpasar">Denpasar</option>
+								</select>
+							</div>
+							<div class="form-group">
+								<label>Kecamatan</label>
+								<select name="KECAMATAN" class="form-control" id="KECAMATAN" required="required">
+									<option value="denpasar utara">Denpasar Utara</option>
+								</select>
+							</div>							
+						</div>
+						<div class="col-sm-12">
+							<div class="form-group">
+								<input type="submit" value="Simpan Data" class="btn btn-success">
+							</div>
+						</div>
+					</form>
 				<?php } ?>
 			</div>
 		</div>
