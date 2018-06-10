@@ -55,8 +55,8 @@
                     <td><?= $value['STATUS_PEMBAYARAN'];?></td>                    
                     <td><?= $value['WAKTU_BUAT'];?></td>                    
                     <td>
-                      <a href="<?= $this->base_url('ControlUser/edit/'.$value['USER_ID']);?>" class="btn btn-warning btn-mini">Edit</a>
-                      <a href="<?= $this->base_url('ControlUser/delete/'.$value['USER_ID']); ?>" class="btn btn-danger btn-mini">Delete</a>
+                      <a href="<?= $this->base_url('ControlPedagang/editBelanjaan/'.$value['USER_ID']);?>" class="btn btn-warning btn-mini">Edit</a>
+                      <a href="<?= $this->base_url('ControlUser/deleteBelanjaan/'.$value['USER_ID']); ?>" class="btn btn-danger btn-mini">Delete</a>
                     </td>
                   </tr>
                   <?php } ?>
