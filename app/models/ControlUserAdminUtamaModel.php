@@ -7,8 +7,14 @@ class ControlUserAdminUtamaModel extends MainModel {
    public function getListUser($param)
    {
    	//get query akan memberikan output array
-   	$q = MainModel::getQuery("SELECT * FROM user WHERE STATE != '".$param."'");
+   	$q = MainModel::getQuery("SELECT * FROM user WHERE STATE != '".$param."' AND STATE_VERIF = 'verified'");
    	return $q;
+   }
+   public function getListVerifUser($param)
+   {
+      //get query akan memberikan output array
+      $q = MainModel::getQuery("SELECT * FROM user WHERE STATE != '".$param."' AND STATE_VERIF = 'unverified'");
+      return $q;
    }
    public function getListAdmin($param)
    {
@@ -16,10 +22,10 @@ class ControlUserAdminUtamaModel extends MainModel {
       $q = MainModel::getQuery("SELECT * FROM user WHERE STATE = '".$param."'");
       return $q;
    }
-   public function insertUser($username,$password,$state)
+   public function insertUser($username,$password,$email,$state,$stateVerif)
    {
    	$waktu_buat = date('Y-m-d h:i:s');
-   	return MainModel::getDB("INSERT INTO user VALUES('','$username','$password','$state','$waktu_buat')");
+   	return MainModel::getDB("INSERT INTO user VALUES('','$username','$password','$email','$state','$stateVerif','$waktu_buat')");
    }
    public function deleteUser($id)
    {
@@ -30,14 +36,19 @@ class ControlUserAdminUtamaModel extends MainModel {
    	$q = MainModel::getQuery("SELECT * FROM user WHERE USER_ID = '$id'");
    	return $q;
    }
-   public function updateUser($id,$username,$password,$state)
+   public function updateUser($id,$username,$password,$email,$state,$stateVerif)
    {
-   	$q = MainModel::getDB("UPDATE user SET USERNAME = '$username',PASSWORD = '$password',STATE = '$state' WHERE USER_ID = '$id'");
+   	$q = MainModel::getDB("UPDATE user SET USERNAME = '$username',PASSWORD = '$password',EMAIL = '$email',STATE = '$state',STATE_VERIF = '$stateVerif' WHERE USER_ID = '$id'");
    	return $q;
    }
    public function updateProfileAdmin($id,$username,$password,$email)
    {
       $q = MainModel::getDB("UPDATE user SET USERNAME = '$username',PASSWORD = '$password',EMAIL = '$email' WHERE USER_ID = '$id'");
+      return $q;
+   }
+   public function updateVerifikasi($id)
+   {
+      $q = MainModel::getDB("UPDATE user SET STATE_VERIF = 'verified' WHERE USER_ID = '$id'");
       return $q;
    }
    //untuk tampilan laporan pada admin utama

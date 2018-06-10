@@ -9,6 +9,7 @@ use app\providers\Url;
 
 class AdminUtama extends MainController {
     public function dashboard() {
+        Auth::checkAuthorization(['admin']);
         $data['listUser'] = ControlUserAdminUtamaModel::getListUser("admin");     
         $data['titlePage'] = "Dashboard";
         $data['actionPage'] = "List";
@@ -49,7 +50,11 @@ class AdminUtama extends MainController {
     	return $this->TemplateView("layout/templateBack","back/admin_utama/musim",$data);
     }
     public function verifikasiUser(){
-    	return $this->TemplateView("layout/templateBack","back/admin_utama/verifikasi_user");
+        $data['listUser'] = ControlUserAdminUtamaModel::getListVerifUser("admin");     
+        $data['titlePage'] = "Verifikasi User";
+        $data['actionPage'] = "List";
+
+    	return $this->TemplateView("layout/templateBack","back/admin_utama/verifikasi_user",$data);
     }
 
 }

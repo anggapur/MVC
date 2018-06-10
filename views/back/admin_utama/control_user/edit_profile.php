@@ -22,7 +22,7 @@
 	            <div class="control-group">
 	              <label class="control-label">Password </label>
 	              <div class="controls">
-	                <input type="text" name="PASSWORD" class="span11" placeholder="" value="<?= $ambilData['PASSWORD'];?>" />
+	                <input type="password" name="PASSWORD" class="span11" placeholder="" value="<?= $ambilData['PASSWORD'];?>" />
 	              </div>
 	            </div>
 	            <div class="control-group">

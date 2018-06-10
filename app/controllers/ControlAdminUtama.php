@@ -168,6 +168,19 @@ class ControlAdminUtama extends MainController{
     	}
     	
     }
+    public function updateVerifikasiUser()
+    {
+    	$id = $_GET['id'];
+    	$update = ControlUserAdminUtamaModel::updateVerifikasi($id);
+
+    	if($update)
+    	{
+    		$_SESSION['status'] = "Sukses Update Data";
+    		$_SESSION['color'] = "success";
+    		Url::redirectTo("AdminUtama/verifikasiUser");
+    	}
+    	
+    }
 
     // control pada dashboard
     public function create()
@@ -178,7 +191,7 @@ class ControlAdminUtama extends MainController{
     }
     public function save()
     {    	
-    	$insert = ControlUserAdminUtamaModel::insertUser($_POST['USERNAME'],$_POST['PASSWORD'],$_POST['STATE']);
+    	$insert = ControlUserAdminUtamaModel::insertUser($_POST['USERNAME'],$_POST['PASSWORD'],$_POST['EMAIL'],$_POST['STATE'],$_POST['STATE_VERIF']);
     	if($insert)    	
     		{
     			$_SESSION['status'] = "Sukses Create Data";
@@ -208,8 +221,8 @@ class ControlAdminUtama extends MainController{
     public function update()
     {
     	$id = $_GET['id'];
-    	$update = ControlUserAdminUtamaModel::updateUser($id,$_POST['USERNAME'],$_POST['PASSWORD'],$_POST['STATE']);
-
+    	$update = ControlUserAdminUtamaModel::updateUser($id,$_POST['USERNAME'],$_POST['PASSWORD'],$_POST['EMAIL'],$_POST['STATE'],$_POST['STATE_VERIF']);
+    	print_r($update);
     	if($update)
     	{
     		$_SESSION['status'] = "Sukses Update Data";
