@@ -2,6 +2,7 @@
 
 namespace app\controllers;
 
+use app\models\ControlUserAdminPetaniModel;
 use app\controllers\MainController;
 use app\models\Pengguna;
 use app\providers\Auth;
@@ -14,6 +15,10 @@ class AdminPetani extends MainController {
         return $this->TemplateView("layout/templateBack","back/admin_petani/Laporan_stok");        
     }   
     public function BarangPetani(){
-    	return $this->TemplateView("layout/templateBack","back/admin_petani/barang_petani");
+    	  
+    	 echo json_encode(ControlUserAdminPetaniModel::testing());
+        $data['titlePage'] = "Barang";
+        $data['actionPage'] = "List"; 
+    	// return $this->TemplateView("layout/templateBack","back/admin_petani/barang_petani",$data);
     } 
 }

@@ -1,7 +1,7 @@
 
 <div id="content">
   <div id="content-header">
-    <div id="breadcrumb"><a href="#" title="Go to Home" class="tip-bottom"><i class="icon-home"></i> Home</a> <a href="#" class="current">Charts &amp; graphs</a></div>
+    <div id="breadcrumb"><a href="#" title="Go to Home" class="tip-bottom"><i class="icon-home"></i> Home</a> <a href="#" class="current">Laporan Penjualan & Stok</a></div>
     <h1>Laporan Penjualan & Stok</h1>
   </div>
   <div class="container-fluid">

@@ -15,10 +15,10 @@
 	<nav class="navigation">
 		<div class="container">
 			<ul class="navigation-menu floatLeft">
-				<li><a href="">Pedagang</a></li>				
-				<li><a href="">Sayur & Buah</a></li>
-				<li><a href="">Musim</a></li>
-				<li><a href="">Monitoring Harga</a></li>
+				<li><a href="<?= $this->base_url('Home/listPetani');?>">Pedagang</a></li>				
+				<li><a href="<?= $this->base_url('Home/listBuahSayur');?>">Sayur & Buah</a></li>
+				<li><a href="<?= $this->base_url('Home/musim');?>">Musim</a></li>
+				<li><a href="<?= $this->base_url('Home/monitoringHarga');?>">Monitoring Harga</a></li>
 			</ul>
 			<ul class="navigation-menu floatRight">
 				<?php 

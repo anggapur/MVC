@@ -38,8 +38,8 @@
                   <td><?= $value['AWAL_MUSIM']; ?></td>
                   <td><?= $value['AKHIR_MUSIM']; ?></td>
                   <td>
-                      <a href="<?= $this->base_url('ControlUser/edit/'.$value['USER_ID']);?>" class="btn btn-warning btn-mini">Edit</a>
-                      <a href="<?= $this->base_url('ControlUser/delete/'.$value['USER_ID']); ?>" class="btn btn-danger btn-mini">Delete</a>
+                      <a href="<?= $this->base_url('ControlAdminUtama/editMusim/'.$value['MUSIM_ID']);?>" class="btn btn-warning btn-mini">Edit</a>
+                      <a href="<?= $this->base_url('ControlAdminUtama/deleteMusim/'.$value['MUSIM_ID']); ?>" class="btn btn-danger btn-mini">Delete</a>
                     </td>
                 </tr>
               </tbody>

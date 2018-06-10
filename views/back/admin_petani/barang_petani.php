@@ -7,6 +7,13 @@
     <hr>
     <div class="row-fluid">
       <div class="span12">
+         <?php
+                if(isset($_SESSION['status']))
+                {
+                  echo "<div class='alert alert-".$_SESSION['color']."'>".$_SESSION['status']."</div>";
+                  unset($_SESSION['status']);
+                }
+              ?>
         <div class="widget-box">
           <div class="widget-title"> <span class="icon"> <i class="icon-th"></i> </span>
             <h5>Tabel Satuan</h5>
@@ -44,28 +51,24 @@
               <thead>
                 <tr>
                   <th>Nama Barang</th>
+                  <th>Jumlah</th>
                   <th>Satuan</th>
                 </tr>
               </thead>
+               <?php
+                foreach($listBarang as $key => $value){
+
+              ?>
               <tbody>
                 <tr class="gradeX">
-                  <td>Apel</td>
-                  <td>Kg</td>
-                </tr>
-                <tr class="gradeC">
-                  <td>Minyak Kelapa</td>
-                  <td>Liter</td>
-                </tr>
-                <tr class="gradeC">
-                  <td>Tomat</td>
-                  <td>Kg</td>
-                </tr>
-                <tr class="gradeU">
-                  <td>Beras</td>
-                  <td>Kg</td>
+                  <td><?= $value['BARANG_NAMA']; ?></td>
+                  <td><?= $value['JUMLAH']; ?></td>
+                  <td><?= $value['SATUAN_NAMA']; ?></td>
                 </tr>
               </tbody>
+              <?php } ?>
             </table>
+
           </div>
         </div>
         <button class="btn btn-primary">Tambah List</button>

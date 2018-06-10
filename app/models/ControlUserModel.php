@@ -29,3 +29,4 @@ class ControlUserModel extends MainModel {
    	$q = MainModel::getDB("UPDATE user SET USERNAME = '$username',PASSWORD = '$password',STATE = '$state' WHERE USER_ID = '$id'");
    	return $q;
    }
+}

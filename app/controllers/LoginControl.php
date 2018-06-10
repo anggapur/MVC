@@ -121,7 +121,7 @@ class LoginControl extends MainController {
         $data = $_POST;
         $query = Login::updateDataIdentitasPetani($data,$_SESSION['USER_ID']);
         if($query)
-            Url::redirectTo('AdminPetai/dashboard');
+            Url::redirectTo('AdminPetani/dashboard');
         else
             echo "Gagal";
     }
