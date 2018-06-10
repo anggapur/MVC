@@ -10,6 +10,13 @@
     <hr>
     <div class="row-fluid">
       <div class="span12">
+        <?php
+                if(isset($_SESSION['status']))
+                {
+                  echo "<div class='alert alert-".$_SESSION['color']."'>".$_SESSION['status']."</div>";
+                  unset($_SESSION['status']);
+                }
+              ?>
         <div class="widget-box">
           <div class="widget-title"> <span class="icon"><i class="icon-th"></i></span>
             <h5>Data table</h5>
@@ -18,37 +25,37 @@
             <table class="table table-bordered data-table">
               <thead>
                 <tr>
-                  <th>Username</th>
-                  <th>Nama Barang</th>
+                  <th>Hasil Panen</th>
+                  <th>Nama Petani</th>
+                  <th>Nama Pedagang</th>
+                  <th>Metode Pengiriman</th>
+                  <th>Harga Satuan</th>
                   <th>Terjual (Qty)</th>
                   <th>Satuan</th>
+                  <th>Status Pengiriman</th>
+                  <th>Status Pembayaran</th>
+                  <th>Waktu Transaksi</th>
                 </tr>
               </thead>
+              <?php 
+                    //Untuk Meloopin data yang diambil dari database
+                    $i = 1;
+                    foreach($listUser as $key => $value){
+                  ?>
               <tbody>
                 <tr class="gradeX">
-                  <td>anggapra</td>
-                  <td>Beras</td>
-                  <td>200</td>
-                  <td class="center">Kg</td>
+                  <td><?= $value['a'];?></td>
+                  <td><?= $value['b'];?></td>
+                  <td><?= $value['c'];?></td>
+                  <td><?= $value['d'];?></td>
+                  <td><?= $value['e'];?></td>
+                  <td><?= $value['f'];?></td>
+                  <td><?= $value['g'];?></td>
+                  <td><?= $value['h'];?></td>
+                  <td><?= $value['i'];?></td>
+                  <td><?= $value['j'];?></td>
                 </tr>
-                <tr class="gradeC">
-                  <td>anggapur</td>
-                  <td>Tomat</td>
-                  <td>20</td>
-                  <td class="center">Kg</td>
-                </tr>
-                <tr class="gradeC">
-                  <td>dito</td>
-                  <td>Minyak Goreng</td>
-                  <td>2000</td>
-                  <td class="center">Liter</td>
-                </tr>
-                <tr class="gradeU">
-                  <td>kiki</td>
-                  <td>Sawi</td>
-                  <td>500</td>
-                  <td class="center">Kg</td>
-                </tr>
+              <?php } ?>
               </tbody>
             </table>
           </div>
