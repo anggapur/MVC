@@ -7,6 +7,7 @@ use app\models\Pengguna;
 use app\providers\Auth;
 use app\providers\Url;
 use app\models\frontModel;
+use app\providers\Formating;
 
 
 class Home extends MainController {
@@ -19,7 +20,7 @@ class Home extends MainController {
 
     	$data['title'] = "List Petani";
         $page = 1;
-        $dataPerPage = 2;
+        $dataPerPage = 4;
         $data['listPetani'] = frontModel::getListPetani($page,$dataPerPage);
     	return $this->TemplateView("layout/templateFront","front/listPetani",$data);
     }
@@ -33,7 +34,7 @@ class Home extends MainController {
     {    	        
     	$data['title'] = "List Sayur & Buah";
         $page = 1;
-        $dataPerPage = 1;
+        $dataPerPage = 4;
         $data['listBuahSayur'] = frontModel::getListBuahSayur($page,$dataPerPage);
     	return $this->TemplateView("layout/templateFront","front/listSayurBuah",$data);
     }
@@ -92,12 +93,48 @@ class Home extends MainController {
         }
         else
         {
-            $data = "";
+            $data = frontModel::detailHasilPanen($_GET['id'])[0];
+            $data['HARGA_RP'] = Formating::moneyFormat($data['HARGA_SATUAN']);
             echo json_encode(['status' => 'success' , 'data' => $data]);   
         }
     }
     public function NotVerified()
     {
         return $this->TemplateView("layout/templateFront","front/NoAccess");   
+    }
+    public function BeliBarang()
+    {
+        $data = $_POST;
+        $data['BARANG'] = frontModel::detailHasilPanen($_POST['HASILPANEN_ID'])[0];        
+        return $this->TemplateView("layout/templateFront","front/beliBarang",$data);   
+    }
+    public function simpanPembelian()
+    {
+        $data = $_POST;
+        $data['PEDAGANG_ID'] = $_SESSION['PEDAGANG_ID'];
+        $data['STATUS_PENGIRIMAN'] = 0;
+        $data['STATUS_PEMBAYARAN'] = 0;
+        $q = frontModel::savePembelian($data);
+        if($q)
+        {
+            $_SESSION['alert']['state'] = 'keranjang';
+            $_SESSION['alert']['color'] = 'success';
+            $_SESSION['alert']['status'] = 'Barang Berhasil Ditambahkan Ke Keranjang';
+            Url::redirectTo('Home/Keranjang');
+        }
+    }
+    public function keranjang()
+    {
+        Auth::checkAuthorization();
+        $data['dataKeranjang'] = frontModel::listDataKeranjang($_SESSION['PEDAGANG_ID']);
+        // echo json_encode($data['dataKeranjang']);
+        return $this->TemplateView("layout/templateFront","front/keranjang",$data);
+    }
+    public function DetailHasilPanen()
+    {
+        $data['detailHasilPanen'] = frontModel::detailHasilPanen($_GET['id'])[0];   
+        $data['fotoHasilPanen'] = frontModel::fotoHasilPanen($_GET['id']);
+        // echo json_encode($data['detailHasilPanen']);
+        return $this->TemplateView("layout/templateFront","front/detailHasilPanen",$data);  
     }
 }

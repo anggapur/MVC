@@ -69,6 +69,23 @@ h1.title {
     font-weight: 500;
     border-radius: 5px;
 }
+a.btn-detail {
+    background: #3c40bb;
+    border: 0px;
+    padding: 5px 10px;
+    color: white;
+    font-weight: 500;
+    border-radius: 5px;
+    text-decoration: none;
+}
+.btn-detail {
+    background: #007b39;
+    border: 0px;
+    padding: 5px 10px;
+    color: white;
+    font-weight: 500;
+    border-radius: 5px;
+}
 .ayoTawar {
     background: #d4b717;
     border: 0px;

@@ -23,6 +23,16 @@ class Login extends MainModel {
         {
         	$data = $query[0];        	
         	Auth::makeAuth($data);
+            if($data['STATE'] == "pedagang")
+            {
+                $q = MainModel::getQuery("SELECT PEDAGANG_ID FROM identitas_pedagang WHERE USER_ID = '".$data['USER_ID']."'")[0];
+                Auth::makeAuth($q);
+            }
+            else if($data['STATE'] == "petani")
+            {
+                $q = MainModel::getQuery("SELECT PETANI_ID FROM identitas_petani WHERE USER_ID = '".$data['USER_ID']."'")[0];
+                Auth::makeAuth($q);
+            }
         	return ['status' => 'success'];
         }
         else

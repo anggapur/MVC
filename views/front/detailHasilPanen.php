@@ -3,23 +3,45 @@
 	?>
 	<!-- Menu Awal -->
 	<section class="big-menu">
-		<div class="container">			
-			<div class="row" style="padding-top: 0px;">
-				<div class="col-md-12">
-					<h2 style="text-align: center;padding: 40px 0px;"><?= $detailBarang['BARANG_NAMA'];?></h2>				
+		<div class="container">
+			<div class="row">
+				<div class="col-md-4" style="text-align: center;">
+						<img src="<?= $this->base_url('assets/uploads/'.$detailHasilPanen['BARANG_THUMBNAIL']);?>" style="width:50%;">
 				</div>
-				<?php foreach($listPetani as $key => $value) { ?>
+				<div class="col-md-4">
+					<table style="text-align: left;" class="table table-hovered">
+						<tr>
+							<td>Nama Barang</td>
+							<td><b>:  <?= $detailHasilPanen['BARANG_NAMA'];?></b></td>
+						</tr>
+						<tr>
+							<td>Lokasi </td>
+							<td><b>:  <?= $detailHasilPanen['PROVINSI']." - ".$detailHasilPanen['KOTA']." - ".$detailHasilPanen['KECAMATAN'];?></b></td>
+						</tr>
+						<tr>
+							<td>Alamat </td>
+							<td><b>:  <?= $detailHasilPanen['ALAMAT'];?></b></td>
+						</tr>
+						<tr>
+							<td>Nama Petani</td>
+							<td><b>:  <a href="<?= $this->base_url('Home/DetailPetani'.$detailHasilPanen['PETANI_ID']);?>"><?= $detailHasilPanen['NAMA']?></a></b></td>
+						</tr>
+						<tr>
+							<td>Phone</td>
+							<td><b>:  <?= $detailHasilPanen['PHONE']?></b></td>
+						</tr>
+					</table>
+					<a href="" class="ayoBeli" data-hasil-panen-id="<?= $detailHasilPanen['HASILPANEN_ID']?>" data-sisa-panen="<?= ($detailHasilPanen['sisa'] == NULL) ? $detailHasilPanen['JUMLAH'] : $detailHasilPanen['sisa']; ?>">Beli</a>
+				</div>
+			</div>
+			<div class="row" style="padding-top: 50px;">
+				<h3 style="padding-bottom: 30px;">Foto - Foto Hasil Panen</h3>
+				<?php foreach($fotoHasilPanen as $key => $value){ ?>
 				<div class="col-md-3">
 					<div class="wrapperContent">	
 						<div class="wrapperImage">
-							<img src="<?= $this->base_url('assets/uploads/'.$value['PHOTO_PROFIL']);?>" class="img-responsive centerTranslate">					
-						</div>
-						<h5><?= $value['NAMA']; ?></h5>
-						<p><?= Formating::moneyFormat($value['HARGA_SATUAN'])." / ".$value['SATUAN_NAMA'];?></p>
-						<p>Tersedia : <?= ($value['sisa'] == NULL) ? $value['JUMLAH'] : $value['sisa']; ?> <?= $value['SATUAN_NAMA']; ?></p>
-						<p>Di Posting : <?= Formating::dayFormat($value['WAKTU_BUAT'],'d M Y');?></p>
-						<a href="" class="ayoBeli" data-hasil-panen-id="<?= $value['HASILPANEN_ID']?>" data-sisa-panen="<?= ($value['sisa'] == NULL) ? $value['JUMLAH'] : $value['sisa']; ?>">Beli</a>
-						<a href="" class="ayoTawar" data-hasil-panen-id="<?= $value['HASILPANEN_ID']?>">Tawar</a>
+							<img src="<?= $this->base_url('assets/uploads/'.$value['FILE']);?>" class="img-responsive centerTranslate">					
+						</div>						
 					</div>
 				</div>							
 				<?php } ?>

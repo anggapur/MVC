@@ -70,7 +70,7 @@
 <!-- End Modal -->
 	<script type="text/javascript">
 		var page = 2;
-		var dataPerPage = 1;
+		var dataPerPage = 4;
 		$(document).ready(function(){
 			//Prov
 			$.ajax({

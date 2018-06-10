@@ -1,4 +1,4 @@
-<?php use app\providers\{Auth,Url}; ?>
+<?php use app\providers\{Auth,Url,Keranjang,Formating}; ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -48,12 +48,12 @@
 					<button class="btn btn-success">Cari</button>					
 				</div>
 			</div>
-			<div class="col-md-3 keranjang-wrap">
+			<a href="<?= $this->base_url('Home/Keranjang');?>" class="col-md-3 keranjang-wrap" style="text-decoration: none;color: black;cursor: pointer;">
 				<div class="troley">
 					<span>Keranjang</span><br>
-					<b>IDR 0</b>
+					<b><?= Formating::moneyFormat(Keranjang::getKeranjang()[0]['diKeranjang']);?></b>
 				</div>
-			</div>
+			</a>
 		</div>
 	</header>
 	<hr class="<?= isset($headerShow) ? $headerShow : '';?>">

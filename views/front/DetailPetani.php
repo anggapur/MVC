@@ -26,6 +26,10 @@
 							<td>Jumlah Post</td>
 							<td><b>:  <?= $dataPetani['JumlahPost']." post";?></b></td>
 						</tr>
+						<tr>
+							<td>Phone</td>
+							<td><b>:  <?= $dataPetani['PHONE']?></b></td>
+						</tr>
 					</table>
 				</div>
 			</div>
@@ -42,6 +46,7 @@
 						<p>Di Posting : <?= Formating::dayFormat($value['WAKTU_BUAT'],'d M Y');?></p>
 						<a href="" class="ayoBeli" data-hasil-panen-id="<?= $value['HASILPANEN_ID']?>" data-sisa-panen="<?= ($value['sisa'] == NULL) ? $value['JUMLAH'] : $value['sisa']; ?>">Beli</a>
 						<a href="" class="ayoTawar" data-hasil-panen-id="<?= $value['HASILPANEN_ID']?>">Tawar</a>
+						<a href="<?= $this->base_url('Home/DetailHasilPanen/'.$value['HASILPANEN_ID']);?>" class="btn-detail">Lihat Detail</a>
 					</div>
 				</div>							
 				<?php } ?>
@@ -51,37 +56,27 @@
 	<!-- Modal -->
 	<div id="myModal" class="modal fade" role="dialog">
 		<div class="modal-dialog">
-
 		<!-- Modal content-->
+		<form method="POST" action="<?= $this->base_url('Home/BeliBarang');?>">
 			<div class="modal-content">
 				<div class="modal-header">
 					<button type="button" class="close" data-dismiss="modal">&times;</button>
 					<h4 class="modal-title">Pembelian</h4>
 				</div>
-			<div class="modal-body">
+			<div class="modal-body">			
 				<div class="form-group">
-					<label>Provinsi</label>
-					<select name="PROVINSI" class="form-control" id="PROVINSI" required="required">
-														
-					</select>
+					<label>Jumlah Pembelian</label>
+					<input type="number" name="JUMLAH" class="form-control" placeholder="Jumlah" id="jumlahPembelian" required="required">
 				</div>
-				<div class="form-group">
-					<label>Kota</label>
-					<select name="KOTA" class="form-control" id="KOTA" required="required">
-						
-					</select>
+				<div class="form-group" id="detailBarang">
+					
 				</div>
-				<div class="form-group">
-					<label>Kecamatan</label>
-					<select name="KECAMATAN" class="form-control" id="KECAMATAN" required="required">
-						
-					</select>
-				</div>		
 			</div>
-			<div class="modal-footer">
-				<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-				<button type="button" class="btn btn-success">Saring</button>
+			<div class="modal-footer">				
+				<input type="hidden" name="HASILPANEN_ID" id="HASILPANEN_ID">
+				<input type="submit" class="btn btn-success" value="BELI">
 			</div>
+		</div>
 			</div>
 		</div>
 	</div>
@@ -98,10 +93,7 @@
 			<div class="modal-body">
 				<h1>Maaf Stock Sudah Habis</h1>		
 			</div>
-			<div class="modal-footer">
-				<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-				<button type="button" class="btn btn-success">Saring</button>
-			</div>
+			
 			</div>
 		</div>
 	</div>
@@ -110,7 +102,7 @@
 			$('.ayoBeli').click(function(e){
 				e.preventDefault();
 				HASILPANEN_ID = $(this).attr('data-hasil-panen-id');
-				SISA = $(this).attr('data-sisa-panen');				
+				SISA = $(this).attr('data-sisa-panen');						
 				if(SISA > 0)
 				{
 
@@ -132,6 +124,25 @@
 							else if(data.status == "success")
 							{
 								$('#myModal').modal('show');
+								$('#jumlahPembelian').attr('max',SISA);
+								$('#detailBarang').empty();
+								$('#HASILPANEN_ID').val(HASILPANEN_ID);
+								html = '<table class="table">'+
+											'<tr>'+
+												'<td>Nama Produk </td>'+
+												'<td>:'+data.data.BARANG_NAMA+'</td>'+
+											'</tr>'+
+											'<tr>'+
+												'<td>Harga</td>'+
+												'<td>:'+data.data.HARGA_RP+'/'+data.data.SATUAN_NAMA+'</td>'+
+											'</tr>'+
+											'<tr>'+
+												'<td>Tersisa</td>'+
+												'<td>:'+SISA+' '+data.data.SATUAN_NAMA+'</td>'+
+											'</tr>'+
+										'</table>';
+								$('#detailBarang').append(html);
+
 							}
 
 						}
