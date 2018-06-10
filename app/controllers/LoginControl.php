@@ -89,7 +89,20 @@ class LoginControl extends MainController {
     public function fillData()
     {
         //Dapatkan user
-        $getUser = 
+        if($_SESSION['STATE'] == 'petani')
+        {
+            $getUser = Login::getUserIdentitasPetani($_SESSION['USER_ID'])[0];
+            if($getUser['KTP'] !== "")
+                Url::redirectTo('AdminPetani/dashboard');
+        }
+        else
+        {
+            $getUser = Login::getUserIdentitasPedagang($_SESSION['USER_ID'])[0];            
+            echo $getUser['NAMA_TOKO'];
+            if($getUser['NAMA_TOKO'] !== "")                                
+                Url::redirectTo('AdminPedagang/dashboard');
+        }
+        
         // Jika User telah terverifikasi tidak bisa mengakses halaman ini
         if($_SESSION['STATE_VERIF'] == "verified")
         {            
@@ -108,7 +121,18 @@ class LoginControl extends MainController {
         $data = $_POST;
         $query = Login::updateDataIdentitasPetani($data,$_SESSION['USER_ID']);
         if($query)
-            echo "Sukses";
+            Url::redirectTo('AdminPetai/dashboard');
+        else
+            echo "Gagal";
+    }
+
+    public function submitDataPedagang()
+    {
+        
+        $data = $_POST;
+        $query = Login::updateDataIdentitasPedagang($data,$_SESSION['USER_ID']);
+        if($query)
+            Url::redirectTo('AdminPedagang/dashboard');
         else
             echo "Gagal";
     }

@@ -13,7 +13,7 @@ class ControlUser extends MainController {
     	$data['titlePage'] = "Control User";
     	$data['actionPage'] = "List";    	    	
     	
-        return $this->TemplateView("layout/templateBack","back/admin_utama/control_user/index",$data);                
+        return $this->TemplateView("layout/templateBack","back/admin_utama/control_user/index",$data);               
     }    
     public function create()
     {
@@ -39,7 +39,7 @@ class ControlUser extends MainController {
     	if($delete)
     	{
     		$_SESSION['status'] = "Sukses Hapus Data";
-    		$_SESSION['color'] = "danger";
+    		$_SESSION['color'] = "success";
     		Url::redirectTo("ControlUser/index");
     	}
     }
