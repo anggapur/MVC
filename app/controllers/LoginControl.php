@@ -13,7 +13,8 @@ class LoginControl extends MainController {
     	$data['PASSWORD'] = md5($this->post['password']);    	
         $queryLogin = Login::checkLogin($data);
         if($queryLogin['status'] == "success")
-        {
+        {            
+
             if($_SESSION['STATE'] == 'admin')
                 Url::redirectTo('AdminUtama/dashboard');
             else if($_SESSION['STATE'] == 'pedagang')
@@ -67,7 +68,8 @@ class LoginControl extends MainController {
         $data_user['EMAIL'] = $_POST['EMAIL'];
         $data_user['STATE'] = $_POST['STATE'];
         $data_user['STATE_VERIF'] = "unverified" ;
-        $query = Login::insertToUser($data_user);
+        echo json_encode($data_user);
+        $query = Login::insertToUser($data_user);        
         //find by email
         $findEmail = Login::findEmail($_POST['EMAIL']);        
         Auth::makeAuth($findEmail[0]);
@@ -82,8 +84,8 @@ class LoginControl extends MainController {
             $query = Login::insertToIdentitasPetani($dataIdentitas);
         else
             $query = Login::insertToIdentitasPedagang($dataIdentitas);
-
-        //view fill data
+        echo $query;
+        // view fill data
         Url::redirectTo('LoginControl/fillData');
     }
     public function fillData()

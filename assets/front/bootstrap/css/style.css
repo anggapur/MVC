@@ -61,13 +61,26 @@ h1.title {
     padding-bottom: 30px;
 }
 
-button.ayoBeli {
+.ayoBeli {
     background: #007b39;
     border: 0px;
     padding: 5px 10px;
     color: white;
     font-weight: 500;
     border-radius: 5px;
+}
+.ayoTawar {
+    background: #d4b717;
+    border: 0px;
+    padding: 5px 10px;
+    color: white;
+    font-weight: 500;
+    text-decoration:none;
+    border-radius: 5px;
+}
+a.ayoTawar:hover {
+    text-decoration: none;
+    color: white;
 }
 
 img.img-big-menu {
@@ -130,4 +143,26 @@ footer {
 }
 .lineChart:hover {
     cursor: pointer;
+}
+a.ayoBeli {
+    background: #007b39;
+    border: 0px;
+    padding: 5px 10px;
+    color: white;
+    font-weight: 500;
+    text-decoration: none;
+    border-radius: 5px;
+}
+
+.centerTranslate{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%);
+}
+.wrapperImage {
+    width: 100%;
+    padding-top: 100%;
+    overflow: hidden;
+    position: relative;
 }

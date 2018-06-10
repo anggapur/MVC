@@ -13,10 +13,13 @@
 				<?php foreach($listPetani as $key => $value) { ?>
 				<div class="col-md-3">
 					<div class="wrapperContent">
-						<img src="<?= $this->base_url('assets/front/assets/logo.png');?>" class="img-big-menu">
+						<div class="wrapperImage">
+							<img src="<?= $this->base_url('assets/uploads/'.$value['PHOTO_PROFIL']);?>" class="img-responsive centerTranslate">
+						</div>
 						<h5><?= $value['NAMA'];?></h5>
 						<p><?= $value['PROVINSI']." - ".$value['KOTA']?></p>
-						<button class="ayoBeli">Lihat</button>
+						<a href="<?= $this->base_url('Home/DetailPetani/'.$value['PETANI_ID']);?>" class="ayoBeli">Lihat</a>
+
 					</div>
 				</div>			
 				<?php  } ?>
@@ -129,10 +132,12 @@
 							console.log(item);
 							html = '<div class="col-md-3">'+
 									'<div class="wrapperContent">'+
-										'<img src="<?= $this->base_url('assets/front/assets/logo.png');?>" class="img-big-menu">'+
+										'<div class="wrapperImage">'+
+											'<img src="<?= $this->base_url('assets/uploads');?>/'+item.PHOTO_PROFIL+'" class="img-responsive centerTranslate">'+
+										'</div>'+
 										'<h5>'+item.NAMA+'</h5>'+
 										'<p>'+item.PROVINSI+'-'+item.KOTA+'</p>'+
-										'<button class="ayoBeli">Lihat</button>'+
+										'<a href="<?= $this->base_url('Home/DetailPetani');?>/'+item.PETANI_ID+'" class="ayoBeli">Lihat</a>'+
 									'</div>';
 							$('#dataContent').append(html);
 

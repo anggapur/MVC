@@ -38,3 +38,11 @@ AND WAKTU_BUAT <= curdate() AND hasil_panen.BARANG_ID = barang.BARANG_ID) as rat
 /
 (SELECT count(HARGA_SATUAN) FROM hasil_panen WHERE WAKTU_BUAT = curdate() - INTERVAL DAYOFWEEK(curdate())+0 DAY AND hasil_panen.BARANG_ID = barang.BARANG_ID) as rataKemarin
 FROM barang
+
+
+
+
+SELECT *,
+(SELECT COUNT(*) FROM hasil_panen WHERE hasil_panen.PETANI_ID = identitas_petani.PETANI_ID) as JumlahPost, 
+(SELECT COUNT(*) FROM hasil_panen WHERE hasil_panen.PETANI_ID = identitas_petani.PETANI_ID GROUP BY BARANG_ID) as JumlahPostKat
+FROM identitas_petani WHERE PETANI_ID = 3

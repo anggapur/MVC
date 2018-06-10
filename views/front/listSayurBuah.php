@@ -9,21 +9,23 @@
 					</div>
 				</div>
 			</div>	
-			<div class="row">
+			<div class="row"  id="dataContent">
 				<?php foreach($listBuahSayur as $key => $value) { ?>
 				<div class="col-md-3">
 					<div class="wrapperContent">
-						<img src="<?= $this->base_url('assets/front/assets/logo.png');?>" class="img-big-menu">
+						<div class="wrapperImage">
+							<img src="<?= $this->base_url('assets/uploads/'.$value['BARANG_THUMBNAIL']);?>" class="img-responsive centerTranslate">
+						</div>
 						<h5><?= $value['BARANG_NAMA'];?></h5>						
-						<button class="ayoBeli">Lihat</button>
+						<a href="<?= $this->base_url('Home/DetailBuahSayur/'.$value['BARANG_ID']);?>" class="ayoBeli">Lihat</a>
 					</div>
 				</div>			
 				<?php  } ?>
-				
+			</div>
 				
 			<div class="row">
 				<div class="col-md-12">
-					<button class="btn btn-default">Muat Lebih Banyak</button>
+					<button class="btn btn-default" id="btnMuat">Muat Lebih Banyak</button>
 				</div>
 			</div>	
 		</div>
@@ -68,7 +70,7 @@
 <!-- End Modal -->
 	<script type="text/javascript">
 		var page = 2;
-		var dataPerPage = 2;
+		var dataPerPage = 1;
 		$(document).ready(function(){
 			//Prov
 			$.ajax({
@@ -119,20 +121,23 @@
 				$('#myModal').modal('show');
 			});
 			//		
-			$('#btnMuat').click(function(){
+			$('#btnMuat').click(function(){	
 				$.ajax({
-					url : "<?= $this->base_url()?>"+"Home/getApiListPetani/"+page+"/"+dataPerPage,
+					url : "<?= $this->base_url()?>"+"Home/getApiListBuahSayur/"+page+"/"+dataPerPage,
 					type : 'GET',
 					dataType : 'JSON',
 					success : function(data){
+						console.log(data);						
 						$.each(data,function(index,item){
 							console.log(item);
 							html = '<div class="col-md-3">'+
 									'<div class="wrapperContent">'+
-										'<img src="<?= $this->base_url('assets/front/assets/logo.png');?>" class="img-big-menu">'+
-										'<h5>'+item.NAMA+'</h5>'+
-										'<p>'+item.PROVINSI+'-'+item.KOTA+'</p>'+
-										'<button class="ayoBeli">Lihat</button>'+
+										'<div class="wrapperImage">'+
+											'<img src="<?= $this->base_url('assets/uploads');?>/'+item.BARANG_THUMBNAIL+'" class="img-responsive centerTranslate">'+
+										'</div>'+
+										'<h5>'+item.BARANG_NAMA+'</h5>'+
+										
+										'<a href="<?= $this->base_url('Home/DetailBuahSayur');?>/'+item.BARANG_ID+'" class="ayoBeli">Lihat</a>'+
 									'</div>';
 							$('#dataContent').append(html);
 

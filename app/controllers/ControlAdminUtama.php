@@ -31,6 +31,17 @@ class ControlAdminUtama extends MainController{
             Url::redirectTo("AdminUtama/barang");
         }
     }
+    public function deleteMusim()
+    {
+        $id = $_GET['id'];
+        $delete = ControlUserAdminUtamaModel::deleteMusim($id);
+        if($delete)
+        {
+            $_SESSION['status'] = "Sukses Hapus Data Musim";
+            $_SESSION['color'] = "success";
+            Url::redirectTo("AdminUtama/musim");
+        }
+    }
     public function createSatuanBarang(){
         $data['titlePage'] = "Satuan";
     	$data['actionPage'] = "Create";    	
@@ -64,6 +75,15 @@ class ControlAdminUtama extends MainController{
 			Url::redirectTo("AdminUtama/barang");
 		}
     }
+    public function saveMusim(){
+    	$insert = ControlUserAdminUtamaModel::insertMusim($_POST['NAMA_MUSIM'],$_POST['AWAL_MUSIM'],$_POST['AKHIR_MUSIM']);
+    	if($insert)    	
+		{
+			$_SESSION['status'] = "Sukses Create Data Musim";
+			$_SESSION['color'] = "success";
+			Url::redirectTo("AdminUtama/musim");
+		}
+    }
     public function editSatuan()
     {
     	$id = $_GET['id'];
@@ -79,6 +99,22 @@ class ControlAdminUtama extends MainController{
     	$data['actionPage'] = "Edit";    
     	$data['ambilData'] = ControlUserAdminUtamaModel::ambilBarang($id)[0];    	
     	return $this->TemplateView("layout/templateBack","back/admin_utama/control_user/edit_barang",$data);
+    }
+    public function editMusim()
+    {
+    	$id = $_GET['id'];
+    	$data['titlePage'] = "Musim";
+    	$data['actionPage'] = "Edit";    
+    	$data['ambilData'] = ControlUserAdminUtamaModel::ambilMusim($id)[0];    	
+    	return $this->TemplateView("layout/templateBack","back/admin_utama/control_user/edit_musim",$data);
+    }
+    public function editProfile()
+    {
+    	$id = $_GET['id'];
+    	$data['titlePage'] = "Profile";
+    	$data['actionPage'] = "Edit";    
+    	$data['ambilData'] = ControlUserAdminUtamaModel::ambilUser($id)[0]; 
+    	return $this->TemplateView("layout/templateBack","back/admin_utama/control_user/edit_profile",$data);
     }
     public function updateSatuan()
     {
@@ -103,6 +139,32 @@ class ControlAdminUtama extends MainController{
     		$_SESSION['status'] = "Sukses Update Data";
     		$_SESSION['color'] = "success";
     		Url::redirectTo("AdminUtama/barang");
+    	}
+    	
+    }
+    public function updateMusim()
+    {
+    	$id = $_GET['id'];
+    	$update = ControlUserAdminUtamaModel::updateMusimAdmin($id,$_POST['NAMA_MUSIM'],$_POST['AWAL_MUSIM'],$_POST['AKHIR_MUSIM']);
+
+    	if($update)
+    	{
+    		$_SESSION['status'] = "Sukses Update Data";
+    		$_SESSION['color'] = "success";
+    		Url::redirectTo("AdminUtama/displayProfile");
+    	}
+    	
+    }
+    public function updateProfile()
+    {
+    	$id = $_GET['id'];
+    	$update = ControlUserAdminUtamaModel::updateProfileAdmin($id,$_POST['USERNAME'],$_POST['PASSWORD'],$_POST['EMAIL']);
+
+    	if($update)
+    	{
+    		$_SESSION['status'] = "Sukses Update Data";
+    		$_SESSION['color'] = "success";
+    		Url::redirectTo("AdminUtama/displayProfile");
     	}
     	
     }

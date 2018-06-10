@@ -10,6 +10,12 @@ class ControlUserAdminUtamaModel extends MainModel {
    	$q = MainModel::getQuery("SELECT * FROM user WHERE STATE != '".$param."'");
    	return $q;
    }
+   public function getListAdmin($param)
+   {
+      //get query akan memberikan output array
+      $q = MainModel::getQuery("SELECT * FROM user WHERE STATE = '".$param."'");
+      return $q;
+   }
    public function insertUser($username,$password,$state)
    {
    	$waktu_buat = date('Y-m-d h:i:s');
@@ -28,6 +34,11 @@ class ControlUserAdminUtamaModel extends MainModel {
    {
    	$q = MainModel::getDB("UPDATE user SET USERNAME = '$username',PASSWORD = '$password',STATE = '$state' WHERE USER_ID = '$id'");
    	return $q;
+   }
+   public function updateProfileAdmin($id,$username,$password,$email)
+   {
+      $q = MainModel::getDB("UPDATE user SET USERNAME = '$username',PASSWORD = '$password',EMAIL = '$email' WHERE USER_ID = '$id'");
+      return $q;
    }
    //untuk tampilan laporan pada admin utama
    public function getListLaporan(){
@@ -66,6 +77,10 @@ class ControlUserAdminUtamaModel extends MainModel {
    {
          return MainModel::getDB("DELETE FROM barang WHERE BARANG_ID = '$id'");
    }
+   public function deleteMusim($id)
+   {
+         return MainModel::getDB("DELETE FROM musim WHERE MUSIM_ID = '$id'");
+   }
    public function insertSatuanBarang($satuan)
    {
       $waktu_buat = date('Y-m-d h:i:s');
@@ -86,6 +101,11 @@ class ControlUserAdminUtamaModel extends MainModel {
       $q = MainModel::getQuery("SELECT * FROM barang WHERE BARANG_ID = '$id'");
       return $q;
    }
+   public function ambilMusim($id)
+   {
+      $q = MainModel::getQuery("SELECT * FROM musim WHERE MUSIM_ID = '$id'");
+      return $q;
+   }
    public function updateSatuan($id,$username)
    {
       $q = MainModel::getDB("UPDATE satuan SET SATUAN_NAMA = '$username' WHERE SATUAN_ID = '$id'");
@@ -94,6 +114,17 @@ class ControlUserAdminUtamaModel extends MainModel {
    public function updateBarangPetani($id,$username)
    {
       $q = MainModel::getDB("UPDATE barang SET BARANG_NAMA = '$username' WHERE BARANG_ID = '$id'");
+      return $q;
+   }
+
+   //untuk file musim
+   public function insertMusim($musim,$awal,$akhir)
+   {
+      return MainModel::getDB("INSERT INTO musim VALUES('','$musim','$awal','$akhir')");
+   }
+   public function updateMusimAdmin($id,$nama_musim,$awal_musim,$akhir_musim)
+   {
+      $q = MainModel::getDB("UPDATE musim SET NAMA_MUSIM = '$nama_musim',AWAL_MUSIM = '$awal_musim',AKHIR_MUSIM = '$akhir_musim' WHERE MUSIM_ID = '$id'");
       return $q;
    }
 }

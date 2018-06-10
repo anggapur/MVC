@@ -33,11 +33,16 @@ class Home extends MainController {
     {    	        
     	$data['title'] = "List Sayur & Buah";
         $page = 1;
-        $dataPerPage = 2;
+        $dataPerPage = 1;
         $data['listBuahSayur'] = frontModel::getListBuahSayur($page,$dataPerPage);
     	return $this->TemplateView("layout/templateFront","front/listSayurBuah",$data);
     }
-
+    public function getApiListBuahSayur()
+    {
+        $page = $_GET['id'];
+        $dataPerPage = $_GET['ids'];
+        echo json_encode(frontModel::getListBuahSayur($page,$dataPerPage));
+    }
     public function loginAndRegister()
     {    	
         if(Auth::checkAuth())
@@ -58,8 +63,30 @@ class Home extends MainController {
     }
     public function musim()
     {    	
-
     	$data['title'] = "Musim";
+        $data['listMusim'] = frontModel::listMusim();
+        $data['listMusimAkan'] = frontModel::listMusimAkanDatang();
     	return $this->TemplateView("layout/templateFront","front/musim",$data);
+    }
+    public function DetailPetani()
+    {
+        $data['dataPetani'] = frontModel::dataPetani($_GET['id'])[0];   
+        $data['listBarangDariPetani'] = frontModel::listBarangDariPetani($_GET['id']);
+        return $this->TemplateView("layout/templateFront","front/DetailPetani",$data);   
+    }
+    public function DetailBuahSayur()
+    {
+        $data['listPetani'] = frontModel::listPetaniBerdasarkanBarang($_GET['id']);           
+        $data['detailBarang'] = frontModel::cariBarang($_GET['id'])[0];
+        return $this->TemplateView("layout/templateFront","front/DetailBuahSayur",$data);   
+    }
+    public function BuatTransaksi()
+    {
+        if(Auth::checkAuth() == FALSE)
+            echo json_encode(['status' => 'not-logged-in']);
+    }
+    public function NotVerified()
+    {
+        return $this->TemplateView("layout/templateFront","front/NoAccess");   
     }
 }

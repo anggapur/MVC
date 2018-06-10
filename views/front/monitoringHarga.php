@@ -5,8 +5,7 @@
 			<div class="row">
 				<div class="col-md-12">
 					<h1 class="title">Monitoring Harga</h1>
-					<div class="filterWrap floatRight">
-						<button class="btn btn-default">Filter</button>
+					<div class="filterWrap floatRight">						
 					</div>
 				</div>
 			</div>	
