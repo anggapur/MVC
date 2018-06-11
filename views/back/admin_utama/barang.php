@@ -59,6 +59,7 @@
               <thead>
                 <tr>
                   <th>Nama Barang</th>
+                  <th>Gambar</th>
                   <th>Action</th>
                 </tr>
               </thead>
@@ -69,6 +70,7 @@
               <tbody>
                 <tr class="gradeX">
                   <td><?= $value['BARANG_NAMA']; ?></td>
+                  <td><?= $value['BARANG_THUMBNAIL']; ?></td>
                   <td>
                     <a href="<?= $this->base_url('ControlAdminUtama/editBarang/'.$value['BARANG_ID']);?>" class="btn btn-warning btn-mini">Edit</a>
                       <a href="<?= $this->base_url('ControlAdminUtama/deleteBarang/'.$value['BARANG_ID']); ?>" class="btn btn-danger btn-mini">Delete</a>
