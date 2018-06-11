@@ -1,6 +1,3 @@
-<?php
-  use app\providers\Formating;
-?>
 <div id="content">
   <div id="content-header">
     <div id="breadcrumb"> <a href="#" title="Go to Home" class="tip-bottom"><i class="icon-home"></i> Home</a> <a href="#" class="current">Barang</a> </div>
@@ -29,12 +26,11 @@
                   <th>Jumlah</th>
                   <th>Satuan</th>
                   <th>Harga Satuan</th>
-                  <th>Action</th>
+                  <th>Foto</th>
                 </tr>
               </thead>
                <?php
-
-                foreach($listHasilPanen as $key => $value){
+                foreach($listBarang as $key => $value){
 
               ?>
               <tbody>
@@ -42,11 +38,7 @@
                   <td><?= $value['BARANG_NAMA']; ?></td>
                   <td><?= $value['JUMLAH']; ?></td>
                   <td><?= $value['SATUAN_NAMA']; ?></td>
-                  <td><?= Formating::moneyFormat($value['HARGA_SATUAN']); ?></td>
-                  <td>
-                    <a href="<?=$this->base_url('AdminPetani/editHasilPanen/'.$value['HASILPANEN_ID']);?>"class="btn btn-warning">Edit</a>
-                    <a href="<?=$this->base_url('AdminPetani/hapusHasilPanen/'.$value['HASILPANEN_ID']);?>"class="btn btn-danger">Delete</a>
-                  </td>
+                  <td><?= $value['HARGA_SATUAN']; ?></td>
                 </tr>
               </tbody>
               <?php } ?>

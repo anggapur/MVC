@@ -9,13 +9,22 @@ use app\models\ControlUserAdminPetaniModel;
 
 class ControlAdminPetani extends MainController{
 	public function saveBarang(){
-    	$insert = ControlUserAdminPetaniModel::insertBarang($_POST['BARANG_NAMA']);
-    	if($insert)    	
-		{
-			$_SESSION['status'] = "Sukses Create Data Barang";
-			$_SESSION['color'] = "success";
-			Url::redirectTo("AdminPetani/BarangPetani");
-		}
+  //   	$insert = ControlUserAdminPetaniModel::insertBarang($_POST['BARANG_NAMA']);
+  //   	if($insert)    	
+		// {
+		// 	$_SESSION['status'] = "Sukses Create Data Barang";
+		// 	$_SESSION['color'] = "success";
+		// 	Url::redirectTo("AdminPetani/BarangPetani");
+		// }
+
+        $insert = ControlUserAdminPetaniModel::insertHasilTani($_POST);
+        if($insert)     
+        {
+         $_SESSION['status'] = "Sukses Create Data Barang";
+         $_SESSION['color'] = "success";
+         Url::redirectTo("AdminPetani/BarangPetani");
+        }
+
     }
 	public function saveSatuan(){
     	$insert = ControlUserAdminPetaniModel::insertSatuanBarang($_POST['SATUAN_NAMA']);
@@ -73,7 +82,9 @@ class ControlAdminPetani extends MainController{
      public function createBarang()
         {
         $data['titlePage'] = "Barang";
-    	$data['actionPage'] = "Create";    	
+    	$data['actionPage'] = "Create";    
+        $data['listBarang'] = ControlUserAdminPetaniModel::listBarang();	
+        $data['listSatuan'] = ControlUserAdminPetaniModel::listSatuan();
     	return $this->TemplateView("layout/templateBack","back/admin_petani/control_petani/create_barang",$data);
         }
      	public function deleteSatuan()

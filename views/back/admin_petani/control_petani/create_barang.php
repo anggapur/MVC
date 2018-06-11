@@ -18,21 +18,32 @@
             <div class="span12">
               <form method="POST" action="<?= $this->base_url('ControlAdminPetani/saveBarang');?>">
                 <div class="form-group">
-                  <label>Nama Barang</label>
-                  <input type="text" name="BARANG_NAMA" class="form-control" placeholder="Masukan Barang">
+                  <label>Barang</label>
+                  <select name="BARANG_ID" class="form-control">
+                    <?php foreach($listBarang as $key => $value){ ?>
+                      <option value="<?=$value['BARANG_ID']?>"><?=$value['BARANG_NAMA']?></option>
+                    <?php  } ?>
+                  </select>
+                </div>
+                 <div class="form-group">
                   <label>Jumlah</label>
-                  <input type="text" name="JUMLAH" class="form-control" placeholder="Masukan Jumlah">
+                  <input type="number" class="form-control" name="JUMLAH">
+                </div>
+                 <div class="form-group">
+                  <label>Harga Satuan</label>
+                  <input type="number" class="form-control" name="HARGA_SATUAN">
+                </div>
+                 <div class="form-group">
                   <label>Satuan</label>
-                  <input type="text" name="SATUAN" class="form-control" placeholder="Masukan Satuan">
-                  <label>Harga Satuan</label>
-                  <input type="text" name="HARGA_SATUAN" class="form-control" placeholder="Masukan Harga Satuan">
-                  <label>Harga Satuan</label>
-                  <input type="text" name="HARGA_SATUAN" class="form-control" placeholder="Masukan Harga Satuan">
+                  <select name="SATUAN_ID" class="form-control">
+                    <?php foreach($listSatuan as $key => $value){ ?>
+                      <option value="<?=$value['SATUAN_ID']?>"><?=$value['SATUAN_NAMA']?></option>
+                    <?php  } ?>
+                  </select>
                 </div>
                 <div class="form-group">
-                  <input type="submit" name="submit" class="btn btn-success" value="Simpan Barang">
+                  <input type="submit" name="submit" class="btn btn-success" value="Simpan">
                 </div>
-
               </form>
             </div>
           </div>
