@@ -52,7 +52,7 @@
     <?php if($_SESSION['STATE'] == "admin"){ ?>
     <li class=""><a href="<?= $this->base_url('AdminUtama/dashboard');?>"><i class="icon icon-home"></i> <span>Dashboard</span></a> </li>
     <li> <a href="<?= $this->base_url('AdminUtama/verifikasiUser');?>"><i class="icon icon-th"></i> <span>Verifikasi User</span></a> </li>
-    <li> <a href="<?= $this->base_url('ControlAdminUtama/editProfile');?>"><i class="icon icon-th"></i> <span>Edit Profile</span></a> </li>
+    <li> <a href="<?= $this->base_url('ControlAdminUtama/editProfile/1');?>"><i class="icon icon-th"></i> <span>Edit Profile</span></a> </li>
     <li> <a href="<?= $this->base_url('AdminUtama/laporan');?>"><i class="icon icon-book"></i> <span>Laporan</span></a> </li>
     <li> <a href="<?= $this->base_url('AdminUtama/barang');?>"><i class="icon icon-tags"></i> <span>Barang</span></a> </li>
     <li> <a href="<?= $this->base_url('AdminUtama/musim');?>"><i class="icon icon-bell"></i> <span>Musim</span></a> </li>

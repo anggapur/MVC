@@ -11,6 +11,7 @@ class ControlAdminUtama extends MainController{
 	//untuk file barang
 	public function deleteSatuan()
     {
+    	Auth::checkAuthorization(['admin']);
         $id = $_GET['id'];
         $delete = ControlUserAdminUtamaModel::deleteSatuanBarang($id);
         if($delete)
@@ -22,6 +23,7 @@ class ControlAdminUtama extends MainController{
     }
     public function deleteBarang()
     {
+    	Auth::checkAuthorization(['admin']);
         $id = $_GET['id'];
         $delete = ControlUserAdminUtamaModel::deleteBarangPetani($id);
         if($delete)
@@ -33,6 +35,7 @@ class ControlAdminUtama extends MainController{
     }
     public function deleteMusim()
     {
+    	Auth::checkAuthorization(['admin']);
         $id = $_GET['id'];
         $delete = ControlUserAdminUtamaModel::deleteMusim($id);
         if($delete)
@@ -43,21 +46,25 @@ class ControlAdminUtama extends MainController{
         }
     }
     public function createSatuanBarang(){
+    	Auth::checkAuthorization(['admin']);
         $data['titlePage'] = "Satuan";
     	$data['actionPage'] = "Create";    	
     	return $this->TemplateView("layout/templateBack","back/admin_utama/control_user/create_satuan",$data);
     }
     public function createBarang(){
+    	Auth::checkAuthorization(['admin']);
         $data['titlePage'] = "Barang";
     	$data['actionPage'] = "Create";    	
     	return $this->TemplateView("layout/templateBack","back/admin_utama/control_user/create_barang",$data);
     }
     public function createMusim(){
+    	Auth::checkAuthorization(['admin']);
         $data['titlePage'] = "Musim";
     	$data['actionPage'] = "Create";    	
     	return $this->TemplateView("layout/templateBack","back/admin_utama/control_user/create_musim",$data);
     }
     public function saveSatuan(){
+    	Auth::checkAuthorization(['admin']);
     	$insert = ControlUserAdminUtamaModel::insertSatuanBarang($_POST['SATUAN_NAMA']);
     	if($insert)    	
 		{
@@ -67,6 +74,7 @@ class ControlAdminUtama extends MainController{
 		}
     }
     public function saveBarang(){
+    	Auth::checkAuthorization(['admin']);
     	$insert = ControlUserAdminUtamaModel::insertBarang($_POST['BARANG_NAMA']);
     	if($insert)    	
 		{
@@ -76,6 +84,7 @@ class ControlAdminUtama extends MainController{
 		}
     }
     public function saveMusim(){
+    	Auth::checkAuthorization(['admin']);
     	$insert = ControlUserAdminUtamaModel::insertMusim($_POST['NAMA_MUSIM'],$_POST['AWAL_MUSIM'],$_POST['AKHIR_MUSIM']);
     	if($insert)    	
 		{
@@ -86,6 +95,7 @@ class ControlAdminUtama extends MainController{
     }
     public function editSatuan()
     {
+    	Auth::checkAuthorization(['admin']);
     	$id = $_GET['id'];
     	$data['titlePage'] = "Satuan";
     	$data['actionPage'] = "Edit";    
@@ -94,6 +104,7 @@ class ControlAdminUtama extends MainController{
     }
     public function editBarang()
     {
+    	Auth::checkAuthorization(['admin']);
     	$id = $_GET['id'];
     	$data['titlePage'] = "Barang";
     	$data['actionPage'] = "Edit";    
@@ -102,6 +113,7 @@ class ControlAdminUtama extends MainController{
     }
     public function editMusim()
     {
+    	Auth::checkAuthorization(['admin']);
     	$id = $_GET['id'];
     	$data['titlePage'] = "Musim";
     	$data['actionPage'] = "Edit";    
@@ -110,6 +122,7 @@ class ControlAdminUtama extends MainController{
     }
     public function editProfile()
     {
+    	Auth::checkAuthorization(['admin']);
     	$id = $_GET['id'];
     	$data['titlePage'] = "Profile";
     	$data['actionPage'] = "Edit";    
@@ -118,6 +131,7 @@ class ControlAdminUtama extends MainController{
     }
     public function updateSatuan()
     {
+    	Auth::checkAuthorization(['admin']);
     	$id = $_GET['id'];
     	$update = ControlUserAdminUtamaModel::updateSatuan($id,$_POST['SATUAN_NAMA']);
 
@@ -131,6 +145,7 @@ class ControlAdminUtama extends MainController{
     }
     public function updateBarang()
     {
+    	Auth::checkAuthorization(['admin']);
     	$id = $_GET['id'];
     	$update = ControlUserAdminUtamaModel::updateBarangPetani($id,$_POST['BARANG_NAMA']);
 
@@ -144,6 +159,7 @@ class ControlAdminUtama extends MainController{
     }
     public function updateMusim()
     {
+    	Auth::checkAuthorization(['admin']);
     	$id = $_GET['id'];
     	$update = ControlUserAdminUtamaModel::updateMusimAdmin($id,$_POST['NAMA_MUSIM'],$_POST['AWAL_MUSIM'],$_POST['AKHIR_MUSIM']);
 
@@ -157,6 +173,7 @@ class ControlAdminUtama extends MainController{
     }
     public function updateProfile()
     {
+    	Auth::checkAuthorization(['admin']);
     	$id = $_GET['id'];
     	$update = ControlUserAdminUtamaModel::updateProfileAdmin($id,$_POST['USERNAME'],$_POST['PASSWORD'],$_POST['EMAIL']);
 
@@ -170,6 +187,7 @@ class ControlAdminUtama extends MainController{
     }
     public function updateVerifikasiUser()
     {
+    	Auth::checkAuthorization(['admin']);
     	$id = $_GET['id'];
     	$update = ControlUserAdminUtamaModel::updateVerifikasi($id);
 
@@ -185,12 +203,14 @@ class ControlAdminUtama extends MainController{
     // control pada dashboard
     public function create()
     {
+    	Auth::checkAuthorization(['admin']);
     	$data['titlePage'] = "Dashboard";
     	$data['actionPage'] = "Create";    	
     	return $this->TemplateView("layout/templateBack","back/admin_utama/control_user/create",$data);
     }
     public function save()
     {    	
+    	Auth::checkAuthorization(['admin']);
     	$insert = ControlUserAdminUtamaModel::insertUser($_POST['USERNAME'],$_POST['PASSWORD'],$_POST['EMAIL'],$_POST['STATE'],$_POST['STATE_VERIF']);
     	if($insert)    	
     		{
@@ -201,6 +221,7 @@ class ControlAdminUtama extends MainController{
     }
     public function delete()
     {
+    	Auth::checkAuthorization(['admin']);
     	$id = $_GET['id'];
     	$delete = ControlUserAdminUtamaModel::deleteUser($id);
     	if($delete)
@@ -212,6 +233,7 @@ class ControlAdminUtama extends MainController{
     }
     public function edit()
     {
+    	Auth::checkAuthorization(['admin']);
     	$id = $_GET['id'];
     	$data['titlePage'] = "Dashboard";
     	$data['actionPage'] = "Edit";    
@@ -220,6 +242,7 @@ class ControlAdminUtama extends MainController{
     }
     public function update()
     {
+    	Auth::checkAuthorization(['admin']);
     	$id = $_GET['id'];
     	$update = ControlUserAdminUtamaModel::updateUser($id,$_POST['USERNAME'],$_POST['PASSWORD'],$_POST['EMAIL'],$_POST['STATE'],$_POST['STATE_VERIF']);
     	print_r($update);
