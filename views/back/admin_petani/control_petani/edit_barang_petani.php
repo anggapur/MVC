@@ -11,33 +11,28 @@
     <div class="row-fluid">
       <div class="widget-box">
         <div class="widget-title bg_lg"><span class="icon"><i class="icon-signal"></i></span>
-          <h5></h5>
+          <h5>Form Edit</h5>
         </div>
         <div class="widget-content" >
           <div class="row-fluid">
             <div class="span12">
-              <form method="POST" action="<?= $this->base_url('ControlAdminUtama/saveMusim');?>">
+              <form method="POST" action="<?= $this->base_url('ControlAdminPetani/updateBarangPetani3/'.$ambilData['BARANG_ID']);?>">
                 <div class="form-group">
-                  <label>Nama Musim</label>
-                  <input type="text" name="NAMA_MUSIM" class="form-control" placeholder="Masukan Nama Musim">
+                  <label>Nama Barang</label>
+                  <input type="text" name="BARANG_NAMA" class="form-control" placeholder="" value="<?= $ambilData['BARANG_NAMA'];?>">
                 </div>
                 <div class="form-group">
-                  <label>Awal Musim</label>
-                  <input type="date" data-date-inline-picker="true" name="AWAL_MUSIM" class="form-control" placeholder="Masukan Awal Musim">
+
+                  <input type="submit" name="submit" class="btn btn-success" value="Simpan Barang">
                 </div>
-                <div class="form-group">
-                  <label>Akhir Musim</label>
-                  <input type="date" data-date-inline-picker="true" name="AKHIR_MUSIM" class="form-control" placeholder="Masukan Akhir Musim">
-                </div>
-                <div class="form-group">
-                  <input type="submit" name="submit" class="btn btn-success" value="Simpan Musim">
-                </div>
+
               </form>
             </div>
           </div>
         </div>
       </div>
     </div>
+
   </div>
 </div>
 

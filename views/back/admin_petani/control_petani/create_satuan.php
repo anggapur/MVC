@@ -16,21 +16,13 @@
         <div class="widget-content" >
           <div class="row-fluid">
             <div class="span12">
-              <form method="POST" action="<?= $this->base_url('ControlAdminUtama/saveMusim');?>">
+              <form method="POST" action="<?= $this->base_url('ControlAdminPetani/saveSatuan');?>">
                 <div class="form-group">
-                  <label>Nama Musim</label>
-                  <input type="text" name="NAMA_MUSIM" class="form-control" placeholder="Masukan Nama Musim">
+                  <label>Satuan Barang</label>
+                  <input type="text" name="SATUAN_NAMA" class="form-control" placeholder="Masukan Satuan">
                 </div>
                 <div class="form-group">
-                  <label>Awal Musim</label>
-                  <input type="date" data-date-inline-picker="true" name="AWAL_MUSIM" class="form-control" placeholder="Masukan Awal Musim">
-                </div>
-                <div class="form-group">
-                  <label>Akhir Musim</label>
-                  <input type="date" data-date-inline-picker="true" name="AKHIR_MUSIM" class="form-control" placeholder="Masukan Akhir Musim">
-                </div>
-                <div class="form-group">
-                  <input type="submit" name="submit" class="btn btn-success" value="Simpan Musim">
+                  <input type="submit" name="submit" class="btn btn-success" value="Simpan Satuan">
                 </div>
               </form>
             </div>

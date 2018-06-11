@@ -20,8 +20,15 @@
                 <div class="form-group">
                   <label>Nama Barang</label>
                   <input type="text" name="BARANG_NAMA" class="form-control" placeholder="Masukan Barang">
+                  <label>Jumlah</label>
+                  <input type="text" name="JUMLAH" class="form-control" placeholder="Masukan Jumlah">
+                  <label>Satuan</label>
+                  <input type="text" name="SATUAN" class="form-control" placeholder="Masukan Satuan">
+                  <label>Harga Satuan</label>
+                  <input type="text" name="HARGA_SATUAN" class="form-control" placeholder="Masukan Harga Satuan">
+                  <label>Harga Satuan</label>
+                  <input type="text" name="HARGA_SATUAN" class="form-control" placeholder="Masukan Harga Satuan">
                 </div>
-                
                 <div class="form-group">
                   <input type="submit" name="submit" class="btn btn-success" value="Simpan Barang">
                 </div>
