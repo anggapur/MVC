@@ -140,4 +140,12 @@ FROM hasil_panen
    		$q = MainModel::getQuery($sql);
    		return $q;
    }
+   public function pencarianPetani($search)
+   {
+   		$sql = "SELECT identitas_petani.*,user.PHOTO_PROFIL FROM identitas_petani 
+   				LEFT JOIN user ON identitas_petani.USER_ID = user.USER_ID
+   				WHERE NAMA LIKE '%".$search."%' OR ALAMAT LIKE '%".$search."%' OR PROVINSI  LIKE '%".$search."%' OR KOTA LIKE '%".$search."%' OR KECAMATAN LIKE '%".$search."%';";
+   		$q = MainModel::getQuery($sql);
+   		return $q;
+   }
 }

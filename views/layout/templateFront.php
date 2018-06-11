@@ -49,10 +49,12 @@
 			</div>
 			<div class="col-md-6 find-wrap">
 				<h6>Cari Kebutuhan Disini</h6>
-				<div class="form-group form-inline">
-					<input type="text" name="search" placeholder="Cari Komoditas & Produk" class="form-control">
-					<button class="btn btn-success">Cari</button>					
-				</div>
+				<form action="<?= $this->base_url('Home/Pencarian');?>" method="POST">
+					<div class="form-group form-inline">
+						<input type="text" name="search" placeholder="Cari Komoditas & Produk" class="form-control">
+						<input type="submit" class="btn btn-success" value="Cari">					
+					</div>
+				</form>
 			</div>
 			<a href="<?= $this->base_url('Home/Keranjang');?>" class="col-md-3 keranjang-wrap" style="text-decoration: none;color: black;cursor: pointer;">
 				<div class="troley <?= ($_SESSION['STATE'] == 'petani') ? 'hide' : '';?>">
