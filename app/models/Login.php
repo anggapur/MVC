@@ -10,7 +10,7 @@ class Login extends MainModel {
         // $query = MainModel::getDB("SELECT * FROM `t_data`");    
         // return MainModel::makeArray($query);          
 
-        $sql = "SELECT USER_ID,USERNAME,STATE FROM user WHERE";
+        $sql = "SELECT USER_ID,USERNAME,STATE,STATE_VERIF FROM user WHERE";
         foreach ($data as $key => $value) {
              	if($value == array_values($data)[0])
              		$sql.=" ".$key." = '".$value."'";
@@ -23,6 +23,16 @@ class Login extends MainModel {
         {
         	$data = $query[0];        	
         	Auth::makeAuth($data);
+            if($data['STATE'] == "pedagang")
+            {
+                $q = MainModel::getQuery("SELECT PEDAGANG_ID FROM identitas_pedagang WHERE USER_ID = '".$data['USER_ID']."'")[0];
+                Auth::makeAuth($q);
+            }
+            else if($data['STATE'] == "petani")
+            {
+                $q = MainModel::getQuery("SELECT PETANI_ID FROM identitas_petani WHERE USER_ID = '".$data['USER_ID']."'")[0];
+                Auth::makeAuth($q);
+            }
         	return ['status' => 'success'];
         }
         else
@@ -44,7 +54,7 @@ class Login extends MainModel {
     {
         extract($data_user);
         $WAKTU_BUAT = date('Y-m-d h:i:s');
-        $sql = "INSERT INTO user VALUES('','$USERNAME','$PASSWORD','$EMAIL','$STATE','$STATE_VERIF','$WAKTU_BUAT')";
+        $sql = "INSERT INTO user VALUES('','$USERNAME','$PASSWORD','$EMAIL','$STATE','$STATE_VERIF','','$WAKTU_BUAT')";
         return MainModel::getDB($sql);        
     }
     public function findEmail($email)
@@ -57,14 +67,14 @@ class Login extends MainModel {
     {
         extract($dataIdentitas);
          $sql = "INSERT INTO identitas_petani VALUES('','$USER_ID','','$NAMA','','$PHONE','','','','$JENIS_KELAMIN','$TANGGAL_LAHIR','$WAKTU_BUAT')";
-        return MainModel::getDB($sql);    
+        return MainModel::getQuery($sql);    
     }
     public function insertToIdentitasPedagang($dataIdentitas)
     {
         extract($dataIdentitas);
         $DATE = date('Y-m-d h:i:s');
          $sql = "INSERT INTO `identitas_pedagang` VALUES ('', '$USER_ID', '', '', '', '$PHONE', '$NAMA', '','','', '$JENIS_KELAMIN','$TANGGAL_LAHIR', '$DATE')";
-        return MainModel::getDB($sql);    
+        return MainModel::getQuery($sql);    
     }
 
     public function updateDataIdentitasPetani($data,$user_id)

@@ -1,11 +1,11 @@
+	<?php use app\providers\{Auth,Url,Alert,Formating}; ?>
 	<!-- Menu Awal -->
 	<section class="big-menu">
 		<div class="container">
 			<div class="row">
 				<div class="col-md-12">
 					<h1 class="title">Monitoring Harga</h1>
-					<div class="filterWrap floatRight">
-						<button class="btn btn-default">Filter</button>
+					<div class="filterWrap floatRight">						
 					</div>
 				</div>
 			</div>	
@@ -22,86 +22,18 @@
 						</tr>
 					</thead>
 					<tbody>
+						<?php 
+						$i=1;
+						foreach($listHarga as $key => $value) { ?>
 						<tr>
-							<td>1</td>
-							<td>Tomat</td>
-							<td>100.000/Kg</td>
-							<td>100.000/Kg</td>
-							<td>100.000/Kg</td>
+							<td><?= $i++;?></td>
+							<td><?= $value['BARANG_NAMA'];?></td>
+							<td><?= Formating::moneyFormat($value['rataMingguIni']);?></td>
+							<td><?= Formating::moneyFormat($value['rataKemarin']);?></td>
+							<td><?= Formating::moneyFormat($value['rataHariIni']);?></td>
 							<td><i class="fa fa-line-chart lineChart" aria-hidden="true"></i></td>
-						</tr>
-						<tr>
-							<td>1</td>
-							<td>Tomat</td>
-							<td>100.000/Kg</td>
-							<td>100.000/Kg</td>
-							<td>100.000/Kg</td>
-							<td><i class="fa fa-line-chart lineChart" aria-hidden="true"></i></td>
-						</tr>
-						<tr>
-							<td>1</td>
-							<td>Tomat</td>
-							<td>100.000/Kg</td>
-							<td>100.000/Kg</td>
-							<td>100.000/Kg</td>
-							<td><i class="fa fa-line-chart lineChart" aria-hidden="true"></i></td>
-						</tr>
-						<tr>
-							<td>1</td>
-							<td>Tomat</td>
-							<td>100.000/Kg</td>
-							<td>100.000/Kg</td>
-							<td>100.000/Kg</td>
-							<td><i class="fa fa-line-chart lineChart" aria-hidden="true"></i></td>
-						</tr>
-						<tr>
-							<td>1</td>
-							<td>Tomat</td>
-							<td>100.000/Kg</td>
-							<td>100.000/Kg</td>
-							<td>100.000/Kg</td>
-							<td><i class="fa fa-line-chart lineChart" aria-hidden="true"></i></td>
-						</tr>
-						<tr>
-							<td>1</td>
-							<td>Tomat</td>
-							<td>100.000/Kg</td>
-							<td>100.000/Kg</td>
-							<td>100.000/Kg</td>
-							<td><i class="fa fa-line-chart lineChart" aria-hidden="true"></i></td>
-						</tr>
-						<tr>
-							<td>1</td>
-							<td>Tomat</td>
-							<td>100.000/Kg</td>
-							<td>100.000/Kg</td>
-							<td>100.000/Kg</td>
-							<td><i class="fa fa-line-chart lineChart" aria-hidden="true"></i></td>
-						</tr>
-						<tr>
-							<td>1</td>
-							<td>Tomat</td>
-							<td>100.000/Kg</td>
-							<td>100.000/Kg</td>
-							<td>100.000/Kg</td>
-							<td><i class="fa fa-line-chart lineChart" aria-hidden="true"></i></td>
-						</tr>
-						<tr>
-							<td>1</td>
-							<td>Tomat</td>
-							<td>100.000/Kg</td>
-							<td>100.000/Kg</td>
-							<td>100.000/Kg</td>
-							<td><i class="fa fa-line-chart lineChart" aria-hidden="true"></i></td>
-						</tr>
-						<tr>
-							<td>1</td>
-							<td>Tomat</td>
-							<td>100.000/Kg</td>
-							<td>100.000/Kg</td>
-							<td>100.000/Kg</td>
-							<td><i class="fa fa-line-chart lineChart" aria-hidden="true"></i></td>
-						</tr>
+						</tr>		
+						<?php } ?>				
 					</tbody>
 				</table>		
 			</div>			

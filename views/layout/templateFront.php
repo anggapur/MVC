@@ -1,4 +1,4 @@
-<?php use app\providers\{Auth,Url}; ?>
+<?php use app\providers\{Auth,Url,Keranjang,Formating}; ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -15,7 +15,7 @@
 	<nav class="navigation">
 		<div class="container">
 			<ul class="navigation-menu floatLeft">
-				<li><a href="<?= $this->base_url('Home/listPetani');?>">Pedagang</a></li>				
+				<li><a href="<?= $this->base_url('Home/listPetani');?>">Petani</a></li>				
 				<li><a href="<?= $this->base_url('Home/listBuahSayur');?>">Sayur & Buah</a></li>
 				<li><a href="<?= $this->base_url('Home/musim');?>">Musim</a></li>
 				<li><a href="<?= $this->base_url('Home/monitoringHarga');?>">Monitoring Harga</a></li>
@@ -39,7 +39,7 @@
 	<header class="<?= isset($headerShow) ? $headerShow : '';?>">
 		<div class="container">
 			<div class="col-md-3 logo-wrap">
-				<img src="<?= $this->base_url('assets/front/assets/logo.png');?>" alt="Logo" class="img-logo">
+				<a href="<?= $this->base_url(''); ?>"><img src="<?= $this->base_url('assets/front/assets/logo.png');?>" alt="Logo" class="img-logo"></a>
 			</div>
 			<div class="col-md-6 find-wrap">
 				<h6>Cari Kebutuhan Disini</h6>
@@ -48,12 +48,12 @@
 					<button class="btn btn-success">Cari</button>					
 				</div>
 			</div>
-			<div class="col-md-3 keranjang-wrap">
+			<a href="<?= $this->base_url('Home/Keranjang');?>" class="col-md-3 keranjang-wrap" style="text-decoration: none;color: black;cursor: pointer;">
 				<div class="troley">
 					<span>Keranjang</span><br>
-					<b>IDR 0</b>
+					<b><?= Formating::moneyFormat(Keranjang::getKeranjang()[0]['diKeranjang']);?></b>
 				</div>
-			</div>
+			</a>
 		</div>
 	</header>
 	<hr class="<?= isset($headerShow) ? $headerShow : '';?>">

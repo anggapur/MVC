@@ -8,6 +8,7 @@ use app\providers\Auth;
 
 class AdminPedagang extends MainController {
      public function dashboard() {
+        Auth::checkAuthorization(['pedagang']);
         return $this->TemplateView("layout/templateBack","back/admin_pedagang/index");        
     }   
     public function EditJubel() {
