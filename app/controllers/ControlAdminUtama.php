@@ -123,7 +123,7 @@ class ControlAdminUtama extends MainController{
     public function editProfile()
     {
     	Auth::checkAuthorization(['admin']);
-    	$id = $_GET['id'];
+    	$id = $_SESSION['USER_ID'];
     	$data['titlePage'] = "Profile";
     	$data['actionPage'] = "Edit";    
     	$data['ambilData'] = ControlUserAdminUtamaModel::ambilUser($id)[0]; 
