@@ -11,18 +11,18 @@
     <div class="row-fluid">
       <div class="widget-box">
         <div class="widget-title bg_lg"><span class="icon"><i class="icon-signal"></i></span>
-          <h5></h5>
+          <h5>Form Edit</h5>
         </div>
         <div class="widget-content" >
           <div class="row-fluid">
             <div class="span12">
-              <form method="POST" action="<?= $this->base_url('ControlAdminPetani/saveBarang');?>">
+              <form method="POST" action="<?= $this->base_url('ControlAdminPetani/updateBarangPetani3/'.$ambilData['BARANG_ID']);?>">
                 <div class="form-group">
                   <label>Nama Barang</label>
-                  <input type="text" name="BARANG_NAMA" class="form-control" placeholder="Masukan Barang">
+                  <input type="text" name="BARANG_NAMA" class="form-control" placeholder="" value="<?= $ambilData['BARANG_NAMA'];?>">
                 </div>
-                
                 <div class="form-group">
+
                   <input type="submit" name="submit" class="btn btn-success" value="Simpan Barang">
                 </div>
 

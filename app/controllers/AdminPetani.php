@@ -16,10 +16,10 @@ class AdminPetani extends MainController {
         return $this->TemplateView("layout/templateBack","back/admin_petani/Laporan_stok");        
     }   
     public function BarangPetani(){
-    	  
-    	 echo json_encode(ControlUserAdminPetaniModel::testing());
+        $data['listUser'] = ControlUserAdminPetaniModel::getListSatuanBarang();
+        $data['listBarang'] = ControlUserAdminPetaniModel::getListSatuan();     
         $data['titlePage'] = "Barang";
         $data['actionPage'] = "List"; 
-    	// return $this->TemplateView("layout/templateBack","back/admin_petani/barang_petani",$data);
+    	 return $this->TemplateView("layout/templateBack","back/admin_petani/barang_petani",$data);
     } 
 }

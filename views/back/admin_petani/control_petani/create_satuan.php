@@ -16,23 +16,20 @@
         <div class="widget-content" >
           <div class="row-fluid">
             <div class="span12">
-              <form method="POST" action="<?= $this->base_url('ControlAdminPetani/saveBarang');?>">
+              <form method="POST" action="<?= $this->base_url('ControlAdminPetani/saveSatuan');?>">
                 <div class="form-group">
-                  <label>Nama Barang</label>
-                  <input type="text" name="BARANG_NAMA" class="form-control" placeholder="Masukan Barang">
+                  <label>Satuan Barang</label>
+                  <input type="text" name="SATUAN_NAMA" class="form-control" placeholder="Masukan Satuan">
                 </div>
-                
                 <div class="form-group">
-                  <input type="submit" name="submit" class="btn btn-success" value="Simpan Barang">
+                  <input type="submit" name="submit" class="btn btn-success" value="Simpan Satuan">
                 </div>
-
               </form>
             </div>
           </div>
         </div>
       </div>
     </div>
-
   </div>
 </div>
 

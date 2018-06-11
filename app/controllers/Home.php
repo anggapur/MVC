@@ -137,4 +137,11 @@ class Home extends MainController {
         // echo json_encode($data['detailHasilPanen']);
         return $this->TemplateView("layout/templateFront","front/detailHasilPanen",$data);  
     }
+    public function pencarian()
+    {
+        $data['title'] = "Hasil Pencarian : ".$_POST['search'];
+        $data['hasilPencarianPetani'] = frontModel::pencarianPetani($_POST['search']);
+        // echo json_encode($data['hasilPencarianPetani']);
+        return $this->TemplateView("layout/templateFront","front/pencarian",$data);  
+    }
 }
