@@ -12,7 +12,7 @@ class ControlPedagangModel extends MainModel {
 
    public function ambilBelanjaan($id)
    {
-   	$sql = "SELECT transaksi.TRANSAKSI_ID,transaksi.METODE_PENGIRIMAN,transaksi.HARGA_SATUAN,transaksi.JUMLAH,transaksi.STATUS_PENGIIRMAN,transaksi.STATUS_PEMBAYARAN,transaksi.WAKTU_BUAT from transaksi inner join identitas_pedagang on identitas_pedagang.PEDAGANG_ID = transaksi.PEDAGANG_ID where identitas_pedagang.USER_ID = '$id'";
+   	$sql = "SELECT transaksi.TRANSAKSI_ID,transaksi.METODE_PENGIRIMAN,transaksi.HARGA_SATUAN,transaksi.JUMLAH,transaksi.STATUS_PENGIRIMAN,transaksi.STATUS_PEMBAYARAN,transaksi.WAKTU_BUAT from transaksi inner join identitas_pedagang on identitas_pedagang.PEDAGANG_ID = transaksi.PEDAGANG_ID where identitas_pedagang.USER_ID = '$id'";
    	$q = MainModel::getQuery($sql);
    	return $q;
    }
@@ -25,7 +25,7 @@ class ControlPedagangModel extends MainModel {
 
    public function cariData($tanggal_awal,$tanggal_akhir)
    {
-   		$q = MainModel::getQuery("SELECT TRANSAKSI_ID,METODE_PENGIRIMAN,HARGA_SATUAN,JUMLAH,STATUS_PENGIIRMAN,STATUS_PEMBAYARAN,WAKTU_BUAT from transaksi where WAKTU_BUAT between '$tanggal_awal' and '$tanggal_akhir' ");
+   		$q = MainModel::getQuery("SELECT TRANSAKSI_ID,METODE_PENGIRIMAN,HARGA_SATUAN,JUMLAH,STATUS_PENGIRIMAN,STATUS_PEMBAYARAN,WAKTU_BUAT from transaksi where WAKTU_BUAT between '$tanggal_awal' and '$tanggal_akhir' ");
    		return $q;
    }
 

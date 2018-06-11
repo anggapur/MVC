@@ -45,13 +45,13 @@ class ControlUserAdminUtamaModel extends MainModel {
    public function updateUser($id,$username,$password,$email,$state,$stateVerif)
    {
       Auth::checkAuthorization(['admin']);
-   	$q = MainModel::getDB("UPDATE user SET USERNAME = '$username',PASSWORD = '$password',EMAIL = '$email',STATE = '$state',STATE_VERIF = '$stateVerif' WHERE USER_ID = '$id'");
+   	$q = MainModel::getDB("UPDATE user SET USERNAME = '$username',PASSWORD = md5('$password'),EMAIL = '$email',STATE = '$state',STATE_VERIF = '$stateVerif' WHERE USER_ID = '$id'");
    	return $q;
    }
    public function updateProfileAdmin($id,$username,$password,$email)
    {
       Auth::checkAuthorization(['admin']);
-      $q = MainModel::getDB("UPDATE user SET USERNAME = '$username',PASSWORD = '$password',EMAIL = '$email' WHERE USER_ID = '$id'");
+      $q = MainModel::getDB("UPDATE user SET USERNAME = '$username',PASSWORD = md5('$password'),EMAIL = '$email' WHERE USER_ID = '$id'");
       return $q;
    }
    public function updateVerifikasi($id)
@@ -105,10 +105,7 @@ class ControlUserAdminUtamaModel extends MainModel {
    }
    public function deleteMusim($id)
    {
-<<<<<<< HEAD
-=======
       Auth::checkAuthorization(['admin']);
->>>>>>> 55d4ecf420f66935014d017c65ac4af05ced5a9c
          return MainModel::getDB("DELETE FROM musim WHERE MUSIM_ID = '$id'");
    }
    public function insertSatuanBarang($satuan)
@@ -137,10 +134,7 @@ class ControlUserAdminUtamaModel extends MainModel {
    }
    public function ambilMusim($id)
    {
-<<<<<<< HEAD
-=======
       Auth::checkAuthorization(['admin']);
->>>>>>> 55d4ecf420f66935014d017c65ac4af05ced5a9c
       $q = MainModel::getQuery("SELECT * FROM musim WHERE MUSIM_ID = '$id'");
       return $q;
    }
@@ -160,18 +154,12 @@ class ControlUserAdminUtamaModel extends MainModel {
    //untuk file musim
    public function insertMusim($musim,$awal,$akhir)
    {
-<<<<<<< HEAD
-=======
       Auth::checkAuthorization(['admin']);
->>>>>>> 55d4ecf420f66935014d017c65ac4af05ced5a9c
       return MainModel::getDB("INSERT INTO musim VALUES('','$musim','$awal','$akhir')");
    }
    public function updateMusimAdmin($id,$nama_musim,$awal_musim,$akhir_musim)
    {
-<<<<<<< HEAD
-=======
       Auth::checkAuthorization(['admin']);
->>>>>>> 55d4ecf420f66935014d017c65ac4af05ced5a9c
       $q = MainModel::getDB("UPDATE musim SET NAMA_MUSIM = '$nama_musim',AWAL_MUSIM = '$awal_musim',AKHIR_MUSIM = '$akhir_musim' WHERE MUSIM_ID = '$id'");
       return $q;
    }

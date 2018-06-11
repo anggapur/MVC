@@ -40,7 +40,7 @@
                     <td><?= $value['METODE_PENGIRIMAN'];?></td>
                     <td><?= $value['HARGA_SATUAN'];?></td>
                     <td><?= $value['JUMLAH'];?></td>
-                    <td><?= $value['STATUS_PENGIIRMAN'];?></td>
+                    <td><?= $value['STATUS_PENGIRIMAN'];?></td>
                     <td><?= $value['STATUS_PEMBAYARAN'];?></td>                    
                     <td><?= $value['WAKTU_BUAT'];?></td>                    
                   </tr>

@@ -35,10 +35,7 @@ class ControlAdminUtama extends MainController{
     }
     public function deleteMusim()
     {
-<<<<<<< HEAD
-=======
     	Auth::checkAuthorization(['admin']);
->>>>>>> 55d4ecf420f66935014d017c65ac4af05ced5a9c
         $id = $_GET['id'];
         $delete = ControlUserAdminUtamaModel::deleteMusim($id);
         if($delete)
@@ -87,10 +84,7 @@ class ControlAdminUtama extends MainController{
 		}
     }
     public function saveMusim(){
-<<<<<<< HEAD
-=======
     	Auth::checkAuthorization(['admin']);
->>>>>>> 55d4ecf420f66935014d017c65ac4af05ced5a9c
     	$insert = ControlUserAdminUtamaModel::insertMusim($_POST['NAMA_MUSIM'],$_POST['AWAL_MUSIM'],$_POST['AKHIR_MUSIM']);
     	if($insert)    	
 		{
@@ -119,18 +113,13 @@ class ControlAdminUtama extends MainController{
     }
     public function editMusim()
     {
-<<<<<<< HEAD
-=======
     	Auth::checkAuthorization(['admin']);
->>>>>>> 55d4ecf420f66935014d017c65ac4af05ced5a9c
     	$id = $_GET['id'];
     	$data['titlePage'] = "Musim";
     	$data['actionPage'] = "Edit";    
     	$data['ambilData'] = ControlUserAdminUtamaModel::ambilMusim($id)[0];    	
     	return $this->TemplateView("layout/templateBack","back/admin_utama/control_user/edit_musim",$data);
     }
-<<<<<<< HEAD
-=======
     public function editProfile()
     {
     	Auth::checkAuthorization(['admin']);
@@ -140,7 +129,6 @@ class ControlAdminUtama extends MainController{
     	$data['ambilData'] = ControlUserAdminUtamaModel::ambilUser($id)[0]; 
     	return $this->TemplateView("layout/templateBack","back/admin_utama/control_user/edit_profile",$data);
     }
->>>>>>> 55d4ecf420f66935014d017c65ac4af05ced5a9c
     public function updateSatuan()
     {
     	Auth::checkAuthorization(['admin']);
@@ -171,10 +159,7 @@ class ControlAdminUtama extends MainController{
     }
     public function updateMusim()
     {
-<<<<<<< HEAD
-=======
     	Auth::checkAuthorization(['admin']);
->>>>>>> 55d4ecf420f66935014d017c65ac4af05ced5a9c
     	$id = $_GET['id'];
     	$update = ControlUserAdminUtamaModel::updateMusimAdmin($id,$_POST['NAMA_MUSIM'],$_POST['AWAL_MUSIM'],$_POST['AKHIR_MUSIM']);
 
@@ -182,10 +167,7 @@ class ControlAdminUtama extends MainController{
     	{
     		$_SESSION['status'] = "Sukses Update Data";
     		$_SESSION['color'] = "success";
-<<<<<<< HEAD
     		Url::redirectTo("AdminUtama/musim");
-=======
-    		Url::redirectTo("AdminUtama/displayProfile");
     	}
     	
     }
@@ -214,7 +196,6 @@ class ControlAdminUtama extends MainController{
     		$_SESSION['status'] = "Sukses Update Data";
     		$_SESSION['color'] = "success";
     		Url::redirectTo("AdminUtama/verifikasiUser");
->>>>>>> 55d4ecf420f66935014d017c65ac4af05ced5a9c
     	}
     	
     }
