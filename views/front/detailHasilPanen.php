@@ -31,7 +31,7 @@
 							<td><b>:  <?= $detailHasilPanen['PHONE']?></b></td>
 						</tr>
 					</table>
-					<a href="" class="ayoBeli" data-hasil-panen-id="<?= $detailHasilPanen['HASILPANEN_ID']?>" data-sisa-panen="<?= ($detailHasilPanen['sisa'] == NULL) ? $detailHasilPanen['JUMLAH'] : $detailHasilPanen['sisa']; ?>">Beli</a>
+					<a href="" class="ayoBeli <?= ($_SESSION['STATE'] == 'petani') ? 'hide' : '';?>" data-hasil-panen-id="<?= $detailHasilPanen['HASILPANEN_ID']?>" data-sisa-panen="<?= ($detailHasilPanen['sisa'] == NULL) ? $detailHasilPanen['JUMLAH'] : $detailHasilPanen['sisa']; ?>">Beli</a>
 				</div>
 			</div>
 			<div class="row" style="padding-top: 50px;">

@@ -24,7 +24,13 @@
 				<?php 
 				if(Auth::checkAuth())
 				{
-					echo '<li><a href="">Akun Saya</a></li>';
+					if($_SESSION['STATE'] == "petani")
+						echo '<li><a href="'.$this->base_url('AdminPetani/dashboard').'">Akun Saya</a></li>';
+					else if($_SESSION['STATE'] == "pedagang")
+						echo '<li><a href="'.$this->base_url('AdminPedagang/dashboard').'">Akun Saya</a></li>';
+					else
+						echo '<li><a href="'.$this->base_url('AdminUtama/dashboard').'">Akun Saya</a></li>';
+
 					echo '<li><a href="'.Url::to('LoginControl/logout').'">Logout</a></li>';
 				}
 				else
@@ -49,7 +55,7 @@
 				</div>
 			</div>
 			<a href="<?= $this->base_url('Home/Keranjang');?>" class="col-md-3 keranjang-wrap" style="text-decoration: none;color: black;cursor: pointer;">
-				<div class="troley">
+				<div class="troley <?= ($_SESSION['STATE'] == 'petani') ? 'hide' : '';?>">
 					<span>Keranjang</span><br>
 					<b><?= Formating::moneyFormat(Keranjang::getKeranjang()[0]['diKeranjang']);?></b>
 				</div>

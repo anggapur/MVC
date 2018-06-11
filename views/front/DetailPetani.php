@@ -44,9 +44,12 @@
 						<p><?= Formating::moneyFormat($value['HARGA_SATUAN'])." / ".$value['SATUAN_NAMA'];?></p>
 						<p>Tersedia : <?= ($value['sisa'] == NULL) ? $value['JUMLAH'] : $value['sisa']; ?> <?= $value['SATUAN_NAMA']; ?></p>
 						<p>Di Posting : <?= Formating::dayFormat($value['WAKTU_BUAT'],'d M Y');?></p>
-						<a href="" class="ayoBeli" data-hasil-panen-id="<?= $value['HASILPANEN_ID']?>" data-sisa-panen="<?= ($value['sisa'] == NULL) ? $value['JUMLAH'] : $value['sisa']; ?>">Beli</a>
-						<a href="" class="ayoTawar" data-hasil-panen-id="<?= $value['HASILPANEN_ID']?>">Tawar</a>
+
+						
+						<a href="" class="ayoBeli <?= ($_SESSION['STATE'] == 'petani') ? 'hide' : '';?>" data-hasil-panen-id="<?= $value['HASILPANEN_ID']?>" data-sisa-panen="<?= ($value['sisa'] == NULL) ? $value['JUMLAH'] : $value['sisa']; ?>">Beli</a>
+						<a href="" class="ayoTawar <?= ($_SESSION['STATE'] == 'petani') ? 'hide' : '';?>" data-hasil-panen-id="<?= $value['HASILPANEN_ID']?>">Tawar</a>
 						<a href="<?= $this->base_url('Home/DetailHasilPanen/'.$value['HASILPANEN_ID']);?>" class="btn-detail">Lihat Detail</a>
+						
 					</div>
 				</div>							
 				<?php } ?>
