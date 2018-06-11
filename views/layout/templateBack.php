@@ -60,13 +60,15 @@
     <!-- Dito -->
     <li class=""><a href="<?= $this->base_url('AdminPetani/dashboard');?>"><i class="icon icon-home"></i> <span>Dashboard</span></a> </li>
     <li> <a href="<?= $this->base_url('AdminPetani/LaporanStok');?>"><i class="icon icon-th"></i> <span>Laporan & Stok Barang</span></a> </li>
-    <li> <a href="<?= $this->base_url('AdminPetani/BarangPetani');?>"><i class="icon icon-th"></i> <span>Tambah Barang Penjual</span></a> </li>
+    <li> <a href="<?= $this->base_url('AdminPetani/BarangPetani');?>"><i class="icon icon-th"></i> <span>Hasil Panen</span></a> </li>
+     
     <?php } else if($_SESSION['STATE'] == "pedagang") { ?>
     <!--KiWi-->
     <li class=""><a href="<?= $this->base_url('AdminPedagang/dashboard');?>"><i class="icon icon-home"></i> <span>Dashboard</span></a> </li>
     <li> <a href="<?= $this->base_url('ControlPedagang/edit');?>"><i class="icon icon-th"></i> <span>Edit Profil Pedagang</span></a> </li>
     <li> <a href="<?= $this->base_url('ControlPedagang/tampilanPencarianTransaksi');?>"><i class="icon icon-th"></i> <span>Cari Data</span></a> </li>
     <li> <a href="<?= $this->base_url('ControlPedagang/laporanTransaksi');?>"><i class="icon icon-th"></i> <span>Laporan Pembelian</span></a> </li>
+
     <?php } ?>
   </ul>
 </div>
