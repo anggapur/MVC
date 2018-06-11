@@ -14,12 +14,15 @@
 						<div class="wrapperImage">
 							<img src="<?= $this->base_url('assets/uploads/'.$value['PHOTO_PROFIL']);?>" class="img-responsive centerTranslate">					
 						</div>
-						<h5><?= $value['NAMA']; ?></h5>
+
+						<a style="text-decoration: none;" href="<?= $this->base_url('Home/detailPetani/'.$value['PETANI_ID']);?>">
+							<h5><?= $value['NAMA']; ?></h5>
+						</a>
 						<p><?= Formating::moneyFormat($value['HARGA_SATUAN'])." / ".$value['SATUAN_NAMA'];?></p>
 						<p>Tersedia : <?= ($value['sisa'] == NULL) ? $value['JUMLAH'] : $value['sisa']; ?> <?= $value['SATUAN_NAMA']; ?></p>
 						<p>Di Posting : <?= Formating::dayFormat($value['WAKTU_BUAT'],'d M Y');?></p>
-						<a href="" class="ayoBeli" data-hasil-panen-id="<?= $value['HASILPANEN_ID']?>" data-sisa-panen="<?= ($value['sisa'] == NULL) ? $value['JUMLAH'] : $value['sisa']; ?>">Beli</a>
-						<a href="" class="ayoTawar" data-hasil-panen-id="<?= $value['HASILPANEN_ID']?>">Tawar</a>
+						<a href="" class="ayoBeli <?= ($_SESSION['STATE'] == 'petani') ? 'hide' : '';?>" data-hasil-panen-id="<?= $value['HASILPANEN_ID']?>" data-sisa-panen="<?= ($value['sisa'] == NULL) ? $value['JUMLAH'] : $value['sisa']; ?>">Beli</a>
+						<a href="" class="ayoTawar <?= ($_SESSION['STATE'] == 'petani') ? 'hide' : '';?>" data-hasil-panen-id="<?= $value['HASILPANEN_ID']?>">Tawar</a>
 					</div>
 				</div>							
 				<?php } ?>
