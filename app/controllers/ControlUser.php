@@ -23,7 +23,8 @@ class ControlUser extends MainController {
     }
     public function save()
     {    	
-    	$insert = ControlUserModel::insertUser($_POST['USERNAME'],$_POST['PASSWORD'],$_POST['STATE']);
+        
+    	$insert = ControlUserModel::insertUser($_POST['USERNAME'],$_POST['PASSWORD'],$_POST['EMAIL'],$_POST['STATE'],$_POST['STATE_VERIF']);
     	if($insert)    	
     		{
     			$_SESSION['status'] = "Sukses Create Data";

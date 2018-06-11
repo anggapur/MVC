@@ -16,7 +16,7 @@
         	return $q->fetchAll(\PDO::FETCH_ASSOC);
         }
         //Langsung ke array
-       	protected function getQuery($query) {
+       	public function getQuery($query) {
             $con =  new \PDO("mysql:host=localhost;dbname=db_jubeltani",
                         "root","");
             return $con->query($query)->fetchAll(\PDO::FETCH_ASSOC);

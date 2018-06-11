@@ -6,31 +6,63 @@ use app\providers\Auth;
 class ControlUserAdminUtamaModel extends MainModel {
    public function getListUser($param)
    {
+      Auth::checkAuthorization(['admin']);
    	//get query akan memberikan output array
-   	$q = MainModel::getQuery("SELECT * FROM user WHERE STATE != '".$param."'");
+   	$q = MainModel::getQuery("SELECT * FROM user WHERE STATE != '".$param."' AND STATE_VERIF = 'verified'");
    	return $q;
    }
-   public function insertUser($username,$password,$state)
+   public function getListVerifUser($param)
    {
+      Auth::checkAuthorization(['admin']);
+      //get query akan memberikan output array
+      $q = MainModel::getQuery("SELECT * FROM user WHERE STATE != '".$param."' AND STATE_VERIF = 'unverified'");
+      return $q;
+   }
+   public function getListAdmin($param)
+   {
+      Auth::checkAuthorization(['admin']);
+      //get query akan memberikan output array
+      $q = MainModel::getQuery("SELECT * FROM user WHERE STATE = '".$param."'");
+      return $q;
+   }
+   public function insertUser($username,$password,$email,$state,$stateVerif)
+   {
+      Auth::checkAuthorization(['admin']);
    	$waktu_buat = date('Y-m-d h:i:s');
-   	return MainModel::getDB("INSERT INTO user VALUES('','$username','$password','$state','$waktu_buat')");
+   	return MainModel::getDB("INSERT INTO user VALUES('','$username','$password','$email','$state','$stateVerif','$waktu_buat')");
    }
    public function deleteUser($id)
    {
+      Auth::checkAuthorization(['admin']);
    		return MainModel::getDB("DELETE FROM user WHERE USER_ID = '$id'");
    }
    public function ambilUser($id)
    {
+      Auth::checkAuthorization(['admin']);
    	$q = MainModel::getQuery("SELECT * FROM user WHERE USER_ID = '$id'");
    	return $q;
    }
-   public function updateUser($id,$username,$password,$state)
+   public function updateUser($id,$username,$password,$email,$state,$stateVerif)
    {
-   	$q = MainModel::getDB("UPDATE user SET USERNAME = '$username',PASSWORD = '$password',STATE = '$state' WHERE USER_ID = '$id'");
+      Auth::checkAuthorization(['admin']);
+   	$q = MainModel::getDB("UPDATE user SET USERNAME = '$username',PASSWORD = '$password',EMAIL = '$email',STATE = '$state',STATE_VERIF = '$stateVerif' WHERE USER_ID = '$id'");
    	return $q;
+   }
+   public function updateProfileAdmin($id,$username,$password,$email)
+   {
+      Auth::checkAuthorization(['admin']);
+      $q = MainModel::getDB("UPDATE user SET USERNAME = '$username',PASSWORD = '$password',EMAIL = '$email' WHERE USER_ID = '$id'");
+      return $q;
+   }
+   public function updateVerifikasi($id)
+   {
+      Auth::checkAuthorization(['admin']);
+      $q = MainModel::getDB("UPDATE user SET STATE_VERIF = 'verified' WHERE USER_ID = '$id'");
+      return $q;
    }
    //untuk tampilan laporan pada admin utama
    public function getListLaporan(){
+      Auth::checkAuthorization(['admin']);
       $q = MainModel::getQuery("SELECT barang.BARANG_NAMA a,identitas_petani.NAMA b,identitas_pedagang.NAMA c,
       transaksi.METODE_PENGIRIMAN d,transaksi.HARGA_SATUAN e,transaksi.JUMLAH f,
       satuan.SATUAN_NAMA g,transaksi.STATUS_PENGIRIMAN h,transaksi.STATUS_PEMBAYARAN i,
@@ -43,65 +75,84 @@ class ControlUserAdminUtamaModel extends MainModel {
       return $q;
    }
    public function getListMusim(){
+      Auth::checkAuthorization(['admin']);
       $q = MainModel::getQuery("SELECT * FROM musim;");
       return $q;
    }
 
    // untuk file admin utama barang
    public function getListSatuanBarang(){
+      Auth::checkAuthorization(['admin']);
       $q = MainModel::getQuery("SELECT *
          FROM barang;");
       return $q;
    }
    public function getListSatuan(){
+      Auth::checkAuthorization(['admin']);
       $q = MainModel::getQuery("SELECT *
          FROM satuan;");
       return $q;
    }
    public function deleteSatuanBarang($id)
    {
+      Auth::checkAuthorization(['admin']);
          return MainModel::getDB("DELETE FROM satuan WHERE SATUAN_ID = '$id'");
    }
    public function deleteBarangPetani($id)
    {
+      Auth::checkAuthorization(['admin']);
          return MainModel::getDB("DELETE FROM barang WHERE BARANG_ID = '$id'");
    }
    public function deleteMusim($id)
    {
+<<<<<<< HEAD
+=======
+      Auth::checkAuthorization(['admin']);
+>>>>>>> 55d4ecf420f66935014d017c65ac4af05ced5a9c
          return MainModel::getDB("DELETE FROM musim WHERE MUSIM_ID = '$id'");
    }
    public function insertSatuanBarang($satuan)
    {
+      Auth::checkAuthorization(['admin']);
       $waktu_buat = date('Y-m-d h:i:s');
       return MainModel::getDB("INSERT INTO satuan VALUES('','$satuan','$waktu_buat')");
    }
    public function insertBarang($barang)
    {
+      Auth::checkAuthorization(['admin']);
       $waktu_buat = date('Y-m-d h:i:s');
       return MainModel::getDB("INSERT INTO barang VALUES('','$barang','','$waktu_buat')");
    }
    public function ambilSatuan($id)
    {
+      Auth::checkAuthorization(['admin']);
       $q = MainModel::getQuery("SELECT * FROM satuan WHERE SATUAN_ID = '$id'");
       return $q;
    }
    public function ambilBarang($id)
    {
+      Auth::checkAuthorization(['admin']);
       $q = MainModel::getQuery("SELECT * FROM barang WHERE BARANG_ID = '$id'");
       return $q;
    }
    public function ambilMusim($id)
    {
+<<<<<<< HEAD
+=======
+      Auth::checkAuthorization(['admin']);
+>>>>>>> 55d4ecf420f66935014d017c65ac4af05ced5a9c
       $q = MainModel::getQuery("SELECT * FROM musim WHERE MUSIM_ID = '$id'");
       return $q;
    }
    public function updateSatuan($id,$username)
    {
+      Auth::checkAuthorization(['admin']);
       $q = MainModel::getDB("UPDATE satuan SET SATUAN_NAMA = '$username' WHERE SATUAN_ID = '$id'");
       return $q;
    }
    public function updateBarangPetani($id,$username)
    {
+      Auth::checkAuthorization(['admin']);
       $q = MainModel::getDB("UPDATE barang SET BARANG_NAMA = '$username' WHERE BARANG_ID = '$id'");
       return $q;
    }
@@ -109,10 +160,18 @@ class ControlUserAdminUtamaModel extends MainModel {
    //untuk file musim
    public function insertMusim($musim,$awal,$akhir)
    {
+<<<<<<< HEAD
+=======
+      Auth::checkAuthorization(['admin']);
+>>>>>>> 55d4ecf420f66935014d017c65ac4af05ced5a9c
       return MainModel::getDB("INSERT INTO musim VALUES('','$musim','$awal','$akhir')");
    }
    public function updateMusimAdmin($id,$nama_musim,$awal_musim,$akhir_musim)
    {
+<<<<<<< HEAD
+=======
+      Auth::checkAuthorization(['admin']);
+>>>>>>> 55d4ecf420f66935014d017c65ac4af05ced5a9c
       $q = MainModel::getDB("UPDATE musim SET NAMA_MUSIM = '$nama_musim',AWAL_MUSIM = '$awal_musim',AKHIR_MUSIM = '$akhir_musim' WHERE MUSIM_ID = '$id'");
       return $q;
    }

@@ -49,14 +49,25 @@
 <div id="sidebar"><a href="#" class="visible-phone"><i class="icon icon-home"></i><?= $titlePage." / ".$actionPage;?></a>
   <ul>
     <!-- Angga Pram -->
-    <li class="active"><a href="<?= $this->base_url('AdminUtama/dashboard');?>"><i class="icon icon-home"></i> <span>Dashboard</span></a> </li>
+    <?php if($_SESSION['STATE'] == "admin"){ ?>
+    <li class=""><a href="<?= $this->base_url('AdminUtama/dashboard');?>"><i class="icon icon-home"></i> <span>Dashboard</span></a> </li>
     <li> <a href="<?= $this->base_url('AdminUtama/verifikasiUser');?>"><i class="icon icon-th"></i> <span>Verifikasi User</span></a> </li>
+    <li> <a href="<?= $this->base_url('ControlAdminUtama/editProfile/1');?>"><i class="icon icon-th"></i> <span>Edit Profile</span></a> </li>
     <li> <a href="<?= $this->base_url('AdminUtama/laporan');?>"><i class="icon icon-book"></i> <span>Laporan</span></a> </li>
     <li> <a href="<?= $this->base_url('AdminUtama/barang');?>"><i class="icon icon-tags"></i> <span>Barang</span></a> </li>
     <li> <a href="<?= $this->base_url('AdminUtama/musim');?>"><i class="icon icon-bell"></i> <span>Musim</span></a> </li>
+    <?php } else if($_SESSION['STATE'] == "petani") { ?>
     <!-- Dito -->
+    <li class=""><a href="<?= $this->base_url('AdminPetani/dashboard');?>"><i class="icon icon-home"></i> <span>Dashboard</span></a> </li>
     <li> <a href="<?= $this->base_url('AdminPetani/LaporanStok');?>"><i class="icon icon-th"></i> <span>Laporan & Stok Barang</span></a> </li>
     <li> <a href="<?= $this->base_url('AdminPetani/BarangPetani');?>"><i class="icon icon-th"></i> <span>Tambah Barang Penjual</span></a> </li>
+    <?php } else if($_SESSION['STATE'] == "pedagang") { ?>
+    <!--KiWi-->
+    <li class=""><a href="<?= $this->base_url('AdminPedagang/dashboard');?>"><i class="icon icon-home"></i> <span>Dashboard</span></a> </li>
+    <li> <a href="<?= $this->base_url('ControlPedagang/edit');?>"><i class="icon icon-th"></i> <span>Edit Profil Pedagang</span></a> </li>
+    <li> <a href="<?= $this->base_url('ControlPedagang/tampilanPencarianTransaksi');?>"><i class="icon icon-th"></i> <span>Cari Data</span></a> </li>
+    <li> <a href="<?= $this->base_url('ControlPedagang/laporanTransaksi');?>"><i class="icon icon-th"></i> <span>Laporan Pembelian</span></a> </li>
+    <?php } ?>
   </ul>
 </div>
 

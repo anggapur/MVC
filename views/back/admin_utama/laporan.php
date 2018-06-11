@@ -51,8 +51,8 @@
                   <td><?= $value['e'];?></td>
                   <td><?= $value['f'];?></td>
                   <td><?= $value['g'];?></td>
-                  <td><?= $value['h'];?></td>
-                  <td><?= $value['i'];?></td>
+                  <td><?= ($value['h'] == "0")?"Belum Dikirim":"Sudah Dikirim"; ?></td>
+                  <td><?= ($value['i'] == "0")?"Belum Dibayar":"Sudah Dibayar"; ?></td>
                   <td><?= $value['j'];?></td>
                 </tr>
               <?php } ?>

@@ -27,8 +27,11 @@
                 <thead>
                   <tr>
                     <th>No</th>
-                    <th>Nama</th>
-                    <th>State</th>
+                    <th>Username</th>
+                    <th>Password</th>
+                    <th>Email</th>
+                    <th>Jenis User</th>
+                    <th>Status Verifikasi</th>
                     <th>Action</th>
                   </tr>
                   <?php 
@@ -38,8 +41,11 @@
                   ?>
                   <tr>
                     <td><?= $i++; ?></td>
-                    <td><?= $value['USERNAME'];?></td>                    
-                    <td><?= $value['STATE'];?></td>                    
+                    <td><?= $value['USERNAME'];?></td>   
+                    <td><?= $value['PASSWORD'];?></td>                 
+                    <td><?= $value['EMAIL'];?></td>
+                    <td><?= $value['STATE'];?></td>
+                    <td><?= $value['STATE_VERIF'];?></td>                    
                     <td>
                       <a href="<?= $this->base_url('ControlAdminUtama/edit/'.$value['USER_ID']);?>" class="btn btn-warning btn-mini">Edit</a>
                       <a href="<?= $this->base_url('ControlAdminUtama/delete/'.$value['USER_ID']); ?>" class="btn btn-danger btn-mini">Delete</a>

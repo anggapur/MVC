@@ -9,6 +9,7 @@ use app\providers\Auth;
 
 class AdminPetani extends MainController {
 	 public function dashboard() {
+        Auth::checkAuthorization(['petani']);
         return $this->TemplateView("layout/templateBack","back/admin_petani/index");        
     }   
     public function LaporanStok() {

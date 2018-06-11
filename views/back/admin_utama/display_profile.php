@@ -14,62 +14,45 @@
 	  <hr>
 	  <div class="row-fluid">
 	    <div class="span12">
+	    	 <?php
+                if(isset($_SESSION['status']))
+                {
+                  echo "<div class='alert alert-".$_SESSION['color']."'>".$_SESSION['status']."</div>";
+                  unset($_SESSION['status']);
+                }
+              ?>
 	      <div class="widget-box">
 	        <div class="widget-title"> <span class="icon"> <i class="icon-align-justify"></i> </span>
 	          <h5>Info Pribadi</h5>
 	        </div>
 	        <div class="widget-content nopadding">
 	          <form action="#" method="get" class="form-horizontal">
-	            <div class="control-group">
-	              <label class="control-label">Foto </label>
-	              <div class="controls">
-	                <img src="img/logo.png" alt="Logo">
-	              </div>
-	            </div>
-	            <div class="control-group">
-	              <label class="control-label">Nama </label>
-	              <div class="controls">
-	                <input type="text" class="span11" placeholder="Angga Pramana" disabled=""/>
-	              </div>
-	            </div>
+	            <?php 
+                    //Untuk Meloopin data yang diambil dari database
+                    foreach($listUser as $key => $value){
+                  ?>
 	            <div class="control-group">
 	              <label class="control-label">Username </label>
 	              <div class="controls">
-	                <input type="text" class="span11" disabled="" placeholder="angga" />
+	                <input type="text" class="span11" placeholder="" value="<?= $value['USERNAME']; ?>" disabled=""/>
 	              </div>
 	            </div>
 	            <div class="control-group">
-	              <label class="control-label">Usia </label>
+	              <label class="control-label">Password </label>
 	              <div class="controls">
-	                <input type="password"  class="span11" placeholder="12 Tahun"  disabled=""/>
+	                <input type="text" class="span11" disabled="" placeholder="" value="<?= $value['PASSWORD']; ?>" />
 	              </div>
 	            </div>
 	            <div class="control-group">
-	              <label class="control-label">Kota Asal </label>
+	              <label class="control-label">Email </label>
 	              <div class="controls">
-	                <input type="text"  class="span11" disabled=""placeholder="Denpasar"/>
+	                <input type="text"  class="span11" placeholder="" value="<?= $value['EMAIL']; ?>" disabled=""/>
 	              </div>
 	            </div>
-	            <div class="control-group">
-	              <label class="control-label">No. Telp </label>
-	              <div class="controls">
-	                <input type="text" class="span11" disabled="" placeholder="08522233322" />
-	              </div>
-	            </div>
-	            <div class="control-group">
-	              <label class="control-label">Agama </label>
-	              <div class="controls">
-	                <input type="text" class="span11" disabled="" placeholder="Hindu" />
-	            </div>
-	            <div class="control-group">
-	              <label class="control-label">Alamat </label>
-	              <div class="controls">
-	                <textarea class="span11" placeholder="Jalan Keboiwa" disabled=""></textarea>
-	              </div>
-	            </div>
+	            <?php } ?>
 	            <div class="form-actions">
-	              <a href="edit_profile.php" type="submit" class="btn btn-primary">Edit</a>
-	              <a href="index.html" type="submit" class="btn btn-danger">Kembali</a>
+	              <a href="<?= $this->base_url('ControlAdminUtama/editProfile/'.$value['USER_ID']);?>" type="submit" class="btn btn-primary">Edit</a>
+	              <a href="<?= $this->base_url('AdminUtama/dashboard'); ?>" type="submit" class="btn btn-danger">Kembali</a>
 	            </div>
 	          </form>
 	        </div>
